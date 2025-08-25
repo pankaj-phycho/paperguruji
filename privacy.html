@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - PaperGuruji</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-bg: #0e0f13;
+            --secondary-bg: #1a1c25;
+            --container-bg: linear-gradient(145deg, #1a1c25, #232632);
+            --primary-color: #a24fbd;
+            --secondary-color: #7e57c2;
+            --text-color: #b0b2c3;
+            --heading-color: #c97ae6;
+            --ad-bg: rgba(28, 30, 38, 0.7);
+            --ad-border: rgba(162, 79, 189, 0.2);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary-bg) 0%, #1d2029 100%);
+            color: #fff;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: var(--container-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(162, 79, 189, 0.3);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+        
+        .content {
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: var(--heading-color);
+            margin: 25px 0 15px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2 i {
+            margin-right: 10px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        p {
+            color: var(--text-color);
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        
+        ol {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            color: var(--text-color);
+            margin-bottom: 15px;
+            padding-left: 10px;
+        }
+        
+        li strong {
+            color: var(--heading-color);
+        }
+        
+        .privacy-highlight {
+            background: rgba(162, 79, 189, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .privacy-highlight p {
+            margin-bottom: 0;
+            font-style: italic;
+        }
+        
+        .ad-container {
+            background: var(--ad-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+            border: 1px solid var(--ad-border);
+            transition: all 0.3s ease;
+        }
+        
+        .ad-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(162, 79, 189, 0.3);
+        }
+        
+        .ad-label {
+            display: inline-block;
+            background: rgba(162, 79, 189, 0.2);
+            color: var(--heading-color);
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        
+        .ad-content {
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(14, 15, 19, 0.4);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(162, 79, 189, 0.3);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(162, 79, 189, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(162, 79, 189, 0.5);
+            text-decoration: none;
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        .quick-nav {
+            position: sticky;
+            top: 20px;
+            background: var(--secondary-bg);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .quick-nav h3 {
+            color: var(--heading-color);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: rgba(162, 79, 189, 0.1);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(162, 79, 189, 0.3);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 20px auto;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .ad-content {
+                min-height: 70px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.2rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .logo-text {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <div class="logo-text">PaperGuruji</div>
+        </div>
+        
+        <div class="header">
+            <h1>Privacy Policy</h1>
+            <p class="subtitle">Last Updated: April 2023</p>
+        </div>
+        
+        <div class="quick-nav">
+            <h3><i class="fas fa-link"></i> Quick Navigation</h3>
+            <div class="nav-links">
+                <a href="#no-login">No Login Required</a>
+                <a href="#advertisements">Advertisements</a>
+                <a href="#telegram-bot">Telegram Bot</a>
+                <a href="#future-tools">Future Tools</a>
+                <a href="#safety">Your Safety</a>
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>At PaperGuruji, your privacy is very important to us. We want to be completely transparent about what information we collect, how it is used, and how we ensure your safety while using our website.</p>
+            
+            <!-- First Ad Container -->
+            <div class="ad-container">
+                <div class="ad-label">ADVERTISEMENT</div>
+                <div class="ad-content">
+                    <script type='text/javascript' src='//pl27498099.profitableratecpm.com/19/f1/00/19f100946fef49ae5193e8a4d934ee8c.js'></script>
+                </div>
+            </div>
+            
+            <h2 id="no-login"><i class="fas fa-user-slash"></i> No Login or Sign-Up Required</h2>
+            <p>Currently, PaperGuruji does not require you to create an account, log in, or share any personal details. You can freely browse and download study PDFs without providing your name, email, or phone number.</p>
+            
+            <h2 id="advertisements"><i class="fas fa-ad"></i> Advertisements</h2>
+            <p>We use third-party advertisements (currently Adsterra) to keep the platform free for students. These ads may use cookies to show you relevant content. However, PaperGuruji itself does not store or use this data.</p>
+            
+            <!-- Second Ad Container -->
+            <div class="ad-container">
+                <div class="ad-label">ADVERTISEMENT</div>
+                <div class="ad-content">
+                    <script type='text/javascript' src='//pl27498099.profitableratecpm.com/19/f1/00/19f100946fef49ae5193e8a4d934ee8c.js'></script>
+                </div>
+            </div>
+            
+            <h2 id="telegram-bot"><i class="fab fa-telegram"></i> Telegram Bot</h2>
+            <p>Our Telegram bot (@paperguruji_bot) is linked with this platform to make access easier. The bot only provides files and updates — it does not collect personal data.</p>
+            
+            <h2 id="future-tools"><i class="fas fa-robot"></i> Future Tools</h2>
+            <p>In the future, PaperGuruji plans to integrate AI study assistants and other interactive tools. If these features require basic data (like questions you type), it will only be used to provide answers and improve your learning experience. We will never sell or misuse your information.</p>
+            
+            <!-- Third Ad Container -->
+            <div class="ad-container">
+                <div class="ad-label">ADVERTISEMENT</div>
+                <div class="ad-content">
+                    <script type='text/javascript' src='//pl27498099.profitableratecpm.com/19/f1/00/19f100946fef49ae5193e8a4d934ee8c.js'></script>
+                </div>
+            </div>
+            
+            <h2><i class="fas fa-external-link-alt"></i> External Links</h2>
+            <p>Our website may contain links to PDFs and third-party sites. Once you leave our website, we are not responsible for how those external sites handle your data.</p>
+            
+            <h2 id="safety"><i class="fas fa-shield-alt"></i> Your Safety</h2>
+            <p>We do not encourage sharing any personal information through comments, feedback, or chat features. Always use your own caution when interacting online.</p>
+            
+            <h2><i class="fas fa-sync-alt"></i> Policy Updates</h2>
+            <p>This privacy policy may be updated in the future as we add new features. Any major changes will be communicated clearly on the website.</p>
+            
+            <div class="privacy-highlight">
+                <p>👉 In short: We don't collect your personal data. We only provide study PDFs, tips, and ads to keep the platform free. Your trust is important, and PaperGuruji is committed to protecting it.</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <a href="index.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Homepage</a>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Highlight current section in quick nav
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('h2');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if(pageYOffset >= sectionTop - 120) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.style.background = 'rgba(162, 79, 189, 0.1)';
+                if(link.getAttribute('href').substring(1) === currentSection) {
+                    link.style.background = 'rgba(162, 79, 189, 0.3)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

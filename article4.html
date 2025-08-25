@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Hall Confidence - PaperGuruji</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #4c8cff 0%, #a24fbd 100%);
+            color: #fff;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .toggle-btn {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 2px solid #4c8cff;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-btn.active {
+            background: #4c8cff;
+            box-shadow: 0 0 15px rgba(76, 140, 255, 0.5);
+        }
+        
+        .toggle-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            color: #4c8cff;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: #a24fbd;
+            margin-bottom: 20px;
+        }
+        
+        .hook {
+            background: linear-gradient(135deg, rgba(76, 140, 255, 0.8) 0%, rgba(162, 79, 189, 0.8) 100%);
+            padding: 25px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 7fr 3fr;
+            gap: 30px;
+        }
+        
+        .main-content {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .sidebar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        h2 {
+            color: #4c8cff;
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #a24fbd;
+        }
+        
+        h3 {
+            color: #a24fbd;
+            margin: 20px 0 12px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .strategy-box {
+            background: rgba(76, 140, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #4c8cff;
+            margin: 20px 0;
+        }
+        
+        .tip-box {
+            background: rgba(162, 79, 189, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #a24fbd;
+        }
+        
+        .interactive-box {
+            background: rgba(76, 140, 255, 0.2);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #4c8cff;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #a24fbd;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #4c8cff;
+        }
+        
+        .timeline-point {
+            text-align: center;
+            position: relative;
+            width: 20%;
+        }
+        
+        .timeline-point::before {
+            content: '';
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #a24fbd;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        
+        .timeline-content {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .technique {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .technique-icon {
+            font-size: 2.5rem;
+            color: #4c8cff;
+            margin-right: 20px;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .technique-content {
+            flex: 1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            color: white;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #4c8cff;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .anxiety-tip {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #4c8cff;
+        }
+        
+        .tip-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #a24fbd;
+            margin-right: 15px;
+            float: left;
+        }
+        
+        .breathing-animation {
+            width: 100%;
+            height: 100px;
+            background: rgba(76, 140, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .circle {
+            width: 60px;
+            height: 60px;
+            background: #4c8cff;
+            border-radius: 50%;
+            position: absolute;
+            transition: all 4s ease-in-out;
+        }
+        
+        /* Language Content */
+        .language-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .language-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline {
+                flex-direction: column;
+            }
+            
+            .timeline-point {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+            
+            .timeline::before {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Language Toggle -->
+        <div class="language-toggle">
+            <button class="toggle-btn active" id="english-btn">English</button>
+            <button class="toggle-btn" id="hindi-btn">हिंदी</button>
+        </div>
+        
+        <!-- English Content -->
+        <div class="language-content active" id="english-content">
+            <header>
+                <h1>💪 Exam Hall Me Confidence Kaise Banaye? Last Minute Anxiety Ko Beat Karne Ke Tips</h1>
+                <p class="subtitle">Overcome Exam Stress and Perform Your Best With These Proven Strategies</p>
+                <p>Published by PaperGuruji • Updated: August 22, 2025</p>
+            </header>
+            
+            <div class="hook">
+                <p><i class="fas fa-lightbulb"></i> <strong>Did you know?</strong> 75% of students experience exam anxiety, but those who know how to manage it perform significantly better. This guide reveals practical techniques to build confidence and overcome last-minute stress.</p>
+            </div>
+            
+            <div class="content">
+                <div class="main-content">
+                    <h2>Understanding Exam Anxiety</h2>
+                    <p>Exam anxiety is a psychological condition where people experience extreme distress and worry before or during exams. It's not just "nervousness" - it can trigger real physical symptoms and mental blocks that prevent you from performing your best.</p>
+                    
+                    <div class="strategy-box">
+                        <h3>Common Symptoms of Exam Anxiety:</h3>
+                        <p>• <strong>Physical:</strong> Rapid heartbeat, sweating, nausea, headaches</p>
+                        <p>• <strong>Emotional:</strong> Feelings of fear, disappointment, helplessness</p>
+                        <p>• <strong>Mental:</strong> Mind going blank, difficulty concentrating</p>
+                        <p>• <strong>Behavioral:</strong> Procrastination, avoidance, fidgeting</p>
+                    </div>
+                    
+                    <h2>7 Powerful Techniques to Build Exam Hall Confidence</h2>
+                    
+                    <div class="anxiety-tip">
+                        <span class="tip-number">1</span>
+                        <h3>Breathing Exercises for Instant Calm</h3>
+                        <p>Deep breathing activates the parasympathetic nervous system, which counteracts the stress response. Just 2-3 minutes of focused breathing can significantly reduce anxiety.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>4-7-8 Technique:</strong> Inhale for 4 seconds, hold for 7 seconds, exhale for 8 seconds. Repeat 4 times.</p>
+                        </div>
+                        
+                        <div class="breathing-animation">
+                            <div class="circle" id="breath-circle"></div>
+                            <button class="btn" id="start-breathing">Start Breathing Exercise</button>
+                        </div>
+                    </div>
+                    
+                    <div class="anxiety-tip">
+                        <span class="tip-number">2</span>
+                        <h3>Positive Self-Talk and Affirmations</h3>
+                        <p>Your inner dialogue dramatically impacts your confidence. Replace negative thoughts with empowering statements that build self-belief.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Affirmations that work:</strong> "I am well-prepared," "I can handle this," "I focus well under pressure," "I remember what I've studied."</p>
+                        </div>
+                    </div>
+                    
+                    <div class="anxiety-tip">
+                        <span class="tip-number">3</span>
+                        <h3>The 5-4-3-2-1 Grounding Technique</h3>
+                        <p>This technique helps during panic moments by bringing your focus back to the present moment and away from anxious thoughts.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>How to do it:</strong> Identify 5 things you can see, 4 things you can feel, 3 things you can hear, 2 things you can smell, and 1 thing you can taste.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="anxiety-tip">
+                        <span class="tip-number">4</span>
+                        <h3>Strategic Exam Planning</h3>
+                        <p>Having a clear plan reduces uncertainty, which is a major cause of anxiety. Know exactly how you'll approach the exam before you enter the hall.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Plan elements:</strong> Time allocation per section, question selection strategy, order of attempting questions, revision time.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="anxiety-tip">
+                        <span class="tip-number">5</span>
+                        <h3>Visualization for Success</h3>
+                        <p>Elite athletes use visualization to enhance performance. Similarly, you can mentally rehearse exam success to build confidence.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>How to visualize:</strong> Close your eyes and vividly imagine yourself calmly answering questions, remembering everything, and feeling confident throughout the exam.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="anxiety-tip">
+                        <span class="tip-number">6</span>
+                        <h3>Quick Physical Exercises</h3>
+                        <p>Physical movement releases tension and increases blood flow to the brain. Simple exercises can be done even at your exam desk.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Discreet exercises:</strong> Shoulder rolls, neck stretches, wrist rotations, ankle circles, and isometric exercises (clenching and releasing muscles).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="anxiety-tip">
+                        <span class="tip-number">7</span>
+                        <h3>The 60-Second Mind Reset</h3>
+                        <p>When you feel overwhelmed during the exam, this quick technique can help you reset your mental state and regain focus.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Reset steps:</strong> Close your eyes, take 3 deep breaths, shake your hands gently, sip water, and affirm "I'm resetting and refocusing."</p>
+                        </div>
+                    </div>
+                    
+                    <h2>Last Minute Preparation Strategies</h2>
+                    <p>The 24 hours before your exam are critical. Here's how to make the most of them without increasing anxiety:</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>24 Hours Before</h3>
+                                <p>Light review only. Focus on key formulas, concepts, and diagrams. Avoid learning new topics.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>Evening Before</h3>
+                                <p>Prepare your exam kit (ID, pens, water, etc.). Enjoy a light meal and engage in relaxing activities.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>Morning Of</h3>
+                                <p>Light exercise, healthy breakfast, positive affirmations. Avoid discussing topics with anxious classmates.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>1 Hour Before</h3>
+                                <p>Quick glance at notes if needed, but primarily use relaxation techniques. Arrive at the center early.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2>During the Exam: Action Plan</h2>
+                    <p>What to do when you first get your question paper:</p>
+                    
+                    <div class="strategy-box">
+                        <h3>First 5 Minutes:</h3>
+                        <p>1. <strong>Read instructions carefully</strong> - even if you think you know them</p>
+                        <p>2. <strong>Quickly scan the entire paper</strong> - get an overview of what's ahead</p>
+                        <p>3. <strong>Plan your time allocation</strong> - mark questions you'll attempt first</p>
+                        <p>4. <strong>Start with your strongest section</strong> - build confidence early</p>
+                    </div>
+                    
+                    <div class="interactive-box">
+                        <h3>Emergency Anxiety First Aid</h3>
+                        <p>If you feel panic setting during the exam:</p>
+                        <div class="tip-box">
+                            <p>1. <strong>Pause</strong> and put your pen down</p>
+                            <p>2. <strong>Breathe</strong> deeply 3 times</p>
+                            <p>3. <strong>Sip</strong> water slowly</p>
+                            <p>4. <strong>Reaffirm</strong> "I can do this"</p>
+                            <p>5. <strong>Continue</strong> with the next question</p>
+                        </div>
+                    </div>
+                    
+                    <div class="interactive-box">
+                        <h3>Ready to Conquer Exam Anxiety?</h3>
+                        <p>Join our community for more tips and support</p>
+                        <button class="btn">Download Anxiety Reduction Plan</button>
+                        <a href="https://t.me/+Hmx5bsDLxsFjNDA1" target="_blank" class="btn">Join Telegram Channel</a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h2>Quick Navigation</h2>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="#" class="btn" style="text-align: center;">Understanding Anxiety</a>
+                        <a href="#" class="btn" style="text-align: center;">7 Confidence Techniques</a>
+                        <a href="#" class="btn" style="text-align: center;">Last Minute Prep</a>
+                        <a href="#" class="btn" style="text-align: center;">During Exam Plan</a>
+                        <a href="#" class="btn" style="text-align: center;">Emergency First Aid</a>
+                    </div>
+                    
+                    <h2>Resources</h2>
+                    <div class="tip-box">
+                        <h3>Free Anxiety Reduction Plan</h3>
+                        <p>Download our printable step-by-step guide to managing exam stress</p>
+                        <button class="btn">Download Now</button>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h3>Recommended Apps</h3>
+                        <p>• Calm (meditation and relaxation)</p>
+                        <p>• Headspace (mindfulness exercises)</p>
+                        <p>• Forest (focus timer)</p>
+                        <p>• Quizlet (last-minute revision)</p>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h3>Quick Relaxation Audio</h3>
+                        <p>Access our 5-minute pre-exam relaxation audio guide</p>
+                        <button class="btn">Listen Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hindi Content -->
+        <div class="language-content" id="hindi-content">
+            <header>
+                <h1>💪 एग्जाम हॉल में कॉन्फिडेंस कैसे बनाएं? लास्ट मिनट एंग्जाइटी को बीट करने के टिप्स</h1>
+                <p class="subtitle">इन Proven Strategies के साथ Exam Stress को Overcome करें और अपना Best Performance दें</p>
+                <p>PaperGuruji द्वारा प्रकाशित • अंतिम अपडेट: 22 अगस्त, 2025</p>
+            </header>
+            
+            <div class="hook">
+                <p><i class="fas fa-lightbulb"></i> <strong>क्या आप जानते हैं?</strong> 75% students exam anxiety experience करते हैं, लेकिन जो इसे manage करना जानते हैं वे significantly better perform करते हैं। यह गाइड confidence build करने और last-minute stress overcome करने के practical techniques reveal करती है।</p>
+            </div>
+            
+            <div class="content">
+                <div class="main-content">
+                    <h2>Exam Anxiety को समझना</h2>
+                    <p>Exam anxiety एक psychological condition है जहां लोग exams से पहले या during extreme distress और worry experience करते हैं। यह सिर्फ "nervousness" नहीं है - यह real physical symptoms और mental blocks trigger कर सकता है जो आपको अपना best performance देने से रोकते हैं।</p>
+                    
+                    <div class="strategy-box">
+                        <h3>Exam Anxiety के Common Symptoms:</h3>
+                        <p>• <strong>Physical:</strong> Rapid heartbeat, sweating, nausea, headaches</p>
+                        <p>• <strong>Emotional:</strong> Fear, disappointment, helplessness की feelings</p>
+                        <p>• <strong>Mental:</strong> Mind blank होना, concentration में difficulty</p>
+                        <p>• <strong>Behavioral:</strong> Procrastination, avoidance, fidgeting</p>
+                    </div>
+                    
+                    <h2>Exam Hall Confidence बनाने के 7 शक्तिशाली तरीके</h2>
+                    
+                    <div class="anxiety-tip">
+                        <span class="tip-number">1</span>
+                        <h3>Instant Calm के लिए Breathing Exercises</h3>
+                        <p>Deep breathing parasympathetic nervous system activate करती है, जो stress response का counteract करती है। Just 2-3 minutes की focused breathing significantly reduce कर सकती है anxiety।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>4-7-8 Technique:</strong> 4 seconds के लिए inhale करें, 7 seconds hold करें, 8 seconds exhale करें। 4 times repeat करें।</p>
+                        </div>
+                        
+                        <div class="breathing-animation">
+                            <div class="circle" id="breath-circle-hindi"></div>
+                            <button class="btn" id="start-breathing-hindi">Breathing Exercise शुरू करें</button>
+                        </div>
+                    </div>
+                    
+                    <div class="anxiety-tip">
+                        <span class="tip-number">2</span>
+                        <h3>Positive Self-Talk और Affirmations</h3>
+                        <p>आपकी inner dialogue dramatically impact करती है आपके confidence को। Negative thoughts को empowering statements से replace करें जो self-belief build करते हैं।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Affirmations that work:</strong> "मैं well-prepared हूं," "मैं handle कर सकता हूं," "मैं pressure में well focus करता हूं," "मैं जो पढ़ा हूं वह remember करता हूं।"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="anxiety-tip">
+                        <span class="tip-number">3</span>
+                        <h3>5-4-3-2-1 Grounding Technique</h3>
+                        <p>यह technique panic moments during help करती है by आपके focus को present moment में वापस लाकर और anxious thoughts से दूर ले जाकर।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>How to do it:</strong> 5 things identify करें जो आप see सकते हैं, 4 things जो feel सकते हैं, 3 things जो hear सकते हैं, 2 things जो smell सकते हैं, और 1 thing जो taste सकते हैं।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="anxiety-tip">
+                        <span class="tip-number">4</span>
+                        <h3>Strategic Exam Planning</h3>
+                        <p>एक clear plan होना uncertainty reduce करता है, जो anxiety का एक major cause है। Exam hall में enter करने से पहले exactly know करें कि आप exam approach कैसे करेंगे।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Plan elements:</strong> Time allocation per section, question selection strategy, questions attempt करने का order, revision time।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="anxiety-tip">
+                        <span class="tip-number">5</span>
+                        <h3>Success के लिए Visualization</h3>
+                        <p>Elite athletes performance enhance करने के लिए visualization use करते हैं। Similarly, आप mentally rehearse कर सकते हैं exam success को confidence build करने के लिए।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>How to visualize:</strong> आँखें बंद करें और vividly imagine करें खुद को calmly questions answer करते हुए, everything remember करते हुए, और throughout the exam confident feel करते हुए।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="anxiety-tip">
+                        <span class="tip-number">6</span>
+                        <h3>Quick Physical Exercises</h3>
+                        <p>Physical movement tension release करती है और brain में blood flow increase करती है। Simple exercises आपके exam desk पर even done हो सकती हैं।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Discreet exercises:</strong> Shoulder rolls, neck stretches, wrist rotations, ankle circles, और isometric exercises (muscles clenching और releasing)।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="anxiety-tip">
+                        <span class="tip-number">7</span>
+                        <h3>60-Second Mind Reset</h3>
+                        <p>जब आप exam during overwhelmed feel करें, यह quick technique help कर सकती है आपके mental state reset करने और focus regain करने में।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Reset steps:</strong> आँखें बंद करें, 3 deep breaths लें, hands gently shake करें, water sip करें, और affirm करें "मैं reset और refocus कर रहा हूं।"</p>
+                        </div>
+                    </div>
+                    
+                    <h2>Last Minute Preparation Strategies</h2>
+                    <p>आपके exam से 24 hours पहले critical होती हैं। यहाँ बताया गया है कि how to make the most of them without anxiety increase किए:</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>24 Hours Before</h3>
+                                <p>सिर्फ light review करें। Key formulas, concepts, और diagrams पर focus करें। New topics learning avoid करें।</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>Evening Before</h3>
+                                <p>अपना exam kit तैयार करें (ID, pens, water, etc.)। एक light meal enjoy करें और relaxing activities engage करें।</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>Morning Of</h3>
+                                <p>Light exercise, healthy breakfast, positive affirmations। Anxious classmates के साथ topics discussing avoid करें।</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>1 Hour Before</h3>
+                                <p>यदि needed हो तो notes पर quick glance करें, लेकिन primarily relaxation techniques use करें। Center early arrive करें।</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2>During the Exam: Action Plan</h2>
+                    <p>जब आपको पहली बार अपना question paper मिले तो क्या करें:</p>
+                    
+                    <div class="strategy-box">
+                        <h3>First 5 Minutes:</h3>
+                        <p>1. <strong>Instructions carefully read करें</strong> - even if आपको लगता है आप उन्हें know करते हैं</p>
+                        <p>2. <strong>Entire paper quickly scan करें</strong> - what's ahead का overview get करें</p>
+                        <p>3. <strong>अपना time allocation plan करें</strong> - questions mark करें जो आप first attempt करेंगे</p>
+                        <p>4. <strong>अपने strongest section से start करें</strong> - confidence early build करें</p>
+                    </div>
+                    
+                    <div class="interactive-box">
+                        <h3>Emergency Anxiety First Aid</h3>
+                        <p>यदि exam during panic setting feel हो:</p>
+                        <div class="tip-box">
+                            <p>1. <strong>Pause</strong> करें और अपना pen down रखें</p>
+                            <p>2. <strong>Breathe</strong> deeply 3 times</p>
+                            <p>3. <strong>Sip</strong> water slowly</p>
+                            <p>4. <strong>Reaffirm</strong> "मैं यह कर सकता हूं"</p>
+                            <p>5. <strong>Continue</strong> करें next question के साथ</p>
+                        </div>
+                    </div>
+                    
+                    <div class="interactive-box">
+                        <h3>Exam Anxiety को Conquer करने के लिए तैयार हैं?</h3>
+                        <p>More tips और support के लिए हमारे community में शामिल हों</p>
+                        <button class="btn">Anxiety Reduction Plan डाउनलोड करें</button>
+                        <a href="https://t.me/+Hmx5bsDLxsFjNDA1" target="_blank" class="btn">Telegram Channel Join करें</a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h2>Quick Navigation</h2>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="#" class="btn" style="text-align: center;">Anxiety को समझना</a>
+                        <a href="#" class="btn" style="text-align: center;">7 Confidence Techniques</a>
+                        <a href="#" class="btn" style="text-align: center;">Last Minute Prep</a>
+                        <a href="#" class="btn" style="text-align: center;">During Exam Plan</a>
+                        <a href="#" class="btn" style="text-align: center;">Emergency First Aid</a>
+                    </div>
+                    
+                    <h2>Resources</h2>
+                    <div class="tip-box">
+                        <h3>Free Anxiety Reduction Plan</h3>
+                        <p>Exam stress manage करने के लिए हमारा printable step-by-step guide डाउनलोड करें</p>
+                        <button class="btn">Download Now</button>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h3>Recommended Apps</h3>
+                        <p>• Calm (meditation और relaxation)</p>
+                        <p>• Headspace (mindfulness exercises)</p>
+                        <p>• Forest (focus timer)</p>
+                        <p>• Quizlet (last-minute revision)</p>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h3>Quick Relaxation Audio</h3>
+                        <p>हमारा 5-minute pre-exam relaxation audio guide access करें</p>
+                        <button class="btn">Listen Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 PaperGuruji. All rights reserved.</p>
+            <p>Want more tips? Join our Telegram channel for daily study advice and resources.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Language toggle functionality
+        const englishBtn = document.getElementById('english-btn');
+        const hindiBtn = document.getElementById('hindi-btn');
+        const englishContent = document.getElementById('english-content');
+        const hindiContent = document.getElementById('hindi-content');
+        
+        englishBtn.addEventListener('click', () => {
+            englishBtn.classList.add('active');
+            hindiBtn.classList.remove('active');
+            englishContent.classList.add('active');
+            hindiContent.classList.remove('active');
+        });
+        
+        hindiBtn.addEventListener('click', () => {
+            hindiBtn.classList.add('active');
+            englishBtn.classList.remove('active');
+            hindiContent.classList.add('active');
+            englishContent.classList.remove('active');
+        });
+        
+        // Breathing animation functionality
+        function startBreathingAnimation(circleId, buttonId) {
+            const circle = document.getElementById(circleId);
+            const button = document.getElementById(buttonId);
+            
+            button.textContent = "Breathing In...";
+            button.disabled = true;
+            
+            // Animate breathing
+            circle.style.transform = "scale(1.5)";
+            
+            setTimeout(() => {
+                button.textContent = "Hold...";
+                setTimeout(() => {
+                    button.textContent = "Breathing Out...";
+                    circle.style.transform = "scale(1)";
+                    
+                    setTimeout(() => {
+                        button.textContent = "Cycle Complete";
+                        setTimeout(() => {
+                            button.textContent = (buttonId === "start-breathing") ? 
+                                "Start Breathing Exercise" : "Breathing Exercise शुरू करें";
+                            button.disabled = false;
+                        }, 1000);
+                    }, 8000);
+                }, 7000);
+            }, 4000);
+        }
+        
+        document.getElementById('start-breathing').addEventListener('click', function() {
+            startBreathingAnimation('breath-circle', 'start-breathing');
+        });
+        
+        document.getElementById('start-breathing-hindi').addEventListener('click', function() {
+            startBreathingAnimation('breath-circle-hindi', 'start-breathing-hindi');
+        });
+        
+        // Interactive functionality
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if(this.textContent === 'Download Anxiety Reduction Plan' || this.textContent === 'Download Now' || 
+                   this.textContent === 'Anxiety Reduction Plan डाउनलोड करें') {
+                    alert('Redirecting to download page...');
+                } else if(!this.hasAttribute('href') && this.id !== 'start-breathing' && this.id !== 'start-breathing-hindi') {
+                    e.preventDefault();
+                    alert('Feature coming soon! Check our Telegram channel for updates.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Common Study Mistakes - PaperGuruji</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #4c8cff 0%, #a24fbd 100%);
+            color: #fff;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .toggle-btn {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 2px solid #4c8cff;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-btn.active {
+            background: #4c8cff;
+            box-shadow: 0 0 15px rgba(76, 140, 255, 0.5);
+        }
+        
+        .toggle-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            color: #4c8cff;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: #a24fbd;
+            margin-bottom: 20px;
+        }
+        
+        .hook {
+            background: linear-gradient(135deg, rgba(76, 140, 255, 0.8) 0%, rgba(162, 79, 189, 0.8) 100%);
+            padding: 25px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 7fr 3fr;
+            gap: 30px;
+        }
+        
+        .main-content {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .sidebar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        h2 {
+            color: #4c8cff;
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #a24fbd;
+        }
+        
+        h3 {
+            color: #a24fbd;
+            margin: 20px 0 12px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .strategy-box {
+            background: rgba(76, 140, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #4c8cff;
+            margin: 20px 0;
+        }
+        
+        .tip-box {
+            background: rgba(162, 79, 189, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #a24fbd;
+        }
+        
+        .interactive-box {
+            background: rgba(76, 140, 255, 0.2);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #4c8cff;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #a24fbd;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #4c8cff;
+        }
+        
+        .timeline-point {
+            text-align: center;
+            position: relative;
+            width: 20%;
+        }
+        
+        .timeline-point::before {
+            content: '';
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #a24fbd;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        
+        .timeline-content {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mistake {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mistake-icon {
+            font-size: 2.5rem;
+            color: #4c8cff;
+            margin-right: 20px;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .mistake-content {
+            flex: 1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            color: white;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #4c8cff;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .mistake-box {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #4c8cff;
+        }
+        
+        .mistake-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #a24fbd;
+            margin-right: 15px;
+            float: left;
+        }
+        
+        .quiz-container {
+            background: rgba(76, 140, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .quiz-question {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .quiz-option {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quiz-option:hover {
+            background: rgba(76, 140, 255, 0.3);
+        }
+        
+        .quiz-option.selected {
+            background: #4c8cff;
+        }
+        
+        /* Language Content */
+        .language-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .language-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline {
+                flex-direction: column;
+            }
+            
+            .timeline-point {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+            
+            .timeline::before {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Language Toggle -->
+        <div class="language-toggle">
+            <button class="toggle-btn active" id="english-btn">English</button>
+            <button class="toggle-btn" id="hindi-btn">हिंदी</button>
+        </div>
+        
+        <!-- English Content -->
+        <div class="language-content active" id="english-content">
+            <header>
+                <h1>🤯 5 Common Study Mistakes Jo Aapki Mehnat Ka Faida Nahi Hone Deti</h1>
+                <p class="subtitle">Identify and Eliminate These Productivity Killers to Maximize Your Study Results</p>
+                <p>Published by PaperGuruji • Updated: August 22, 2025</p>
+            </header>
+            
+            <div class="hook">
+                <p><i class="fas fa-lightbulb"></i> <strong>Did you know?</strong> Many students work hard but don't get the results they deserve because of common study mistakes. Research shows that fixing these 5 mistakes can improve your learning efficiency by up to 70%!</p>
+            </div>
+            
+            <div class="content">
+                <div class="main-content">
+                    <h2>Why Smart Studying Beats Hard Studying</h2>
+                    <p>Working hard is important, but working smart is what separates top performers from average students. Many students fall into common traps that waste their time and effort without improving their results.</p>
+                    
+                    <div class="strategy-box">
+                        <h3>The Productivity Paradox:</h3>
+                        <p>• Many students study longer but not smarter</p>
+                        <p>• Time spent studying ≠ knowledge gained</p>
+                        <p>• Active learning beats passive reading every time</p>
+                        <p>• Efficiency matters more than duration</p>
+                    </div>
+                    
+                    <h2>The 5 Most Common Study Mistakes (And How to Fix Them)</h2>
+                    
+                    <div class="mistake-box">
+                        <span class="mistake-number">1</span>
+                        <h3>Passive Reading Instead of Active Recall</h3>
+                        <p><strong>The Mistake:</strong> Re-reading notes and textbooks without testing yourself. This creates a false sense of familiarity without actual learning.</p>
+                        <p><strong>Why It Doesn't Work:</strong> Passive reading doesn't create strong neural pathways. You recognize information but can't recall it when needed.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>The Fix:</strong> Use active recall techniques. After reading a section, close the book and write down everything you remember. Then check for accuracy and completeness.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mistake-box">
+                        <span class="mistake-number">2</span>
+                        <h3>Cramming Instead of Spaced Repetition</h3>
+                        <p><strong>The Mistake:</strong> Trying to learn everything at once right before exams. This leads to quick forgetting and high stress.</p>
+                        <p><strong>Why It Doesn't Work:</strong> Cramming overloads your working memory without transferring information to long-term storage.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>The Fix:</strong> Use spaced repetition. Study material multiple times with increasing intervals between sessions. Use apps like Anki for optimal scheduling.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mistake-box">
+                        <span class="mistake-number">3</span>
+                        <h3>Multitasking During Study Sessions</h3>
+                        <p><strong>The Mistake:</strong> Checking phones, watching TV, or browsing social media while studying. This fragments attention and prevents deep focus.</p>
+                        <p><strong>Why It Doesn't Work:</strong> The brain can't truly multitask—it switches rapidly between tasks, reducing efficiency and retention.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>The Fix:</strong> Use the Pomodoro technique: 25 minutes of focused study followed by 5-minute breaks. Remove all distractions during study periods.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mistake-box">
+                        <span class="mistake-number">4</span>
+                        <h3>Highlighting Without Understanding</h3>
+                        <p><strong>The Mistake:</strong> Highlighting or underlining text without truly engaging with the material. This creates colorful notes but little actual learning.</p>
+                        <p><strong>Why It Doesn't Work:</strong> Highlighting can become a mindless activity that doesn't promote deeper processing of information.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>The Fix:</strong> Highlight only after understanding the material. Use the Feynman technique: explain concepts in simple terms as if teaching someone else.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mistake-box">
+                        <span class="mistake-number">5</span>
+                        <h3>Neglecting Practice and Application</h3>
+                        <p><strong>The Mistake:</strong> Only reading and reviewing without practicing application. This is like watching sports but never playing.</p>
+                        <p><strong>Why It Doesn't Work:</strong> Recognition (knowing information when you see it) is different from recall (producing information when needed).</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>The Fix:</strong> Practice with past papers, problem sets, and self-testing. Apply knowledge in different contexts to strengthen understanding.</p>
+                        </div>
+                    </div>
+                    
+                    <h2>Test Your Study Habits</h2>
+                    <p>Take this quick quiz to see if you're making these common mistakes:</p>
+                    
+                    <div class="quiz-container">
+                        <div class="quiz-question">1. How do you usually review your notes?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option">A) Read them multiple times</div>
+                            <div class="quiz-option">B) Close them and try to recall the information</div>
+                            <div class="quiz-option">C) Highlight important parts</div>
+                            <div class="quiz-option">D) Explain them to someone else</div>
+                        </div>
+                        
+                        <div class="quiz-question">2. When do you typically start preparing for exams?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option">A) Several weeks in advance with regular reviews</div>
+                            <div class="quiz-option">B) The week before the exam</div>
+                            <div class="quiz-option">C) A few days before the exam</div>
+                            <div class="quiz-option">D) The night before the exam</div>
+                        </div>
+                        
+                        <div class="quiz-question">3. How do you handle distractions while studying?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option">A) I keep my phone nearby and check it frequently</div>
+                            <div class="quiz-option">B) I study with TV or music playing in the background</div>
+                            <div class="quiz-option">C) I use website blockers and put my phone in another room</div>
+                            <div class="quiz-option">D) I study in complete silence with no distractions</div>
+                        </div>
+                        
+                        <button class="btn" id="check-answers">Check Your Answers</button>
+                    </div>
+                    
+                    <h2>The Fix-It Plan: Transforming Your Study Approach</h2>
+                    <p>Now that you know the common mistakes, here's how to transform your study approach:</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>Week 1</h3>
+                                <p>Focus on eliminating multitasking. Use the Pomodoro technique and remove all distractions during study sessions.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>Week 2</h3>
+                                <p>Implement active recall. After each study session, close your materials and write down everything you remember.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>Week 3</h3>
+                                <p>Start using spaced repetition. Create a schedule for reviewing material at increasing intervals.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>Week 4</h3>
+                                <p>Focus on application. Spend at least 50% of your study time practicing with problems and past papers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="interactive-box">
+                        <h3>Ready to Transform Your Study Habits?</h3>
+                        <p>Join thousands of students who've doubled their learning efficiency by fixing these common mistakes</p>
+                        <button class="btn">Download Study Improvement Plan</button>
+                        <a href="https://t.me/+Hmx5bsDLxsFjNDA1" target="_blank" class="btn">Join Telegram Channel</a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h2>Quick Navigation</h2>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="#" class="btn" style="text-align: center;">The 5 Mistakes</a>
+                        <a href="#" class="btn" style="text-align: center;">Mistake 1: Passive Reading</a>
+                        <a href="#" class="btn" style="text-align: center;">Mistake 2: Cramming</a>
+                        <a href="#" class="btn" style="text-align: center;">Mistake 3: Multitasking</a>
+                        <a href="#" class="btn" style="text-align: center;">Mistake 4: Highlighting</a>
+                        <a href="#" class="btn" style="text-align: center;">Mistake 5: No Practice</a>
+                        <a href="#" class="btn" style="text-align: center;">The Fix-It Plan</a>
+                    </div>
+                    
+                    <h2>Resources</h2>
+                    <div class="tip-box">
+                        <h3>Free Study Improvement Plan</h3>
+                        <p>Download our printable 4-week plan to fix these study mistakes</p>
+                        <button class="btn">Download Now</button>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h3>Recommended Tools</h3>
+                        <p>• Anki (spaced repetition flashcards)</p>
+                        <p>• Forest (focus timer)</p>
+                        <p>• Cold Turkey (website blocker)</p>
+                        <p>• Notion (study planning)</p>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h3>Study Habit Quiz</h3>
+                        <p>Take our comprehensive quiz to analyze your study habits and identify areas for improvement.</p>
+                        <button class="btn">Take Full Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hindi Content -->
+        <div class="language-content" id="hindi-content">
+            <header>
+                <h1>🤯 5 कॉमन स्टडी मिस्टेक्स जो आपकी मेहनत का फायदा नहीं होने देती</h1>
+                <p class="subtitle">अपने Study Results को Maximize करने के लिए इन Productivity Killers को Identify और Eliminate करें</p>
+                <p>PaperGuruji द्वारा प्रकाशित • अंतिम अपडेट: 22 अगस्त, 2025</p>
+            </header>
+            
+            <div class="hook">
+                <p><i class="fas fa-lightbulb"></i> <strong>क्या आप जानते हैं?</strong> कई students hard work करते हैं लेकिन उन्हें वे results नहीं मिलते जिनके वे हकदार हैं common study mistakes की वजह से। Research shows कि इन 5 mistakes को fix करने से आपकी learning efficiency 70% तक improve हो सकती है!</p>
+            </div>
+            
+            <div class="content">
+                <div class="main-content">
+                    <h2>क्यों Smart Studying, Hard Studying से बेहतर है</h2>
+                    <p>Hard work important है, लेकिन smart work ही top performers को average students से अलग करती है। कई students common traps में फंस जाते हैं जो उनका time और effort waste करते हैं without उनके results improve किए।</p>
+                    
+                    <div class="strategy-box">
+                        <h3>The Productivity Paradox:</h3>
+                        <p>• कई students longer study करते हैं लेकिन smarter नहीं</p>
+                        <p>• Studying में spent time ≠ knowledge gained</p>
+                        <p>• Active learning हर बार passive reading को beat करता है</p>
+                        <p>• Duration से more matter करती है efficiency</p>
+                    </div>
+                    
+                    <h2>5 सबसे Common Study Mistakes (और उन्हें कैसे Fix करें)</h2>
+                    
+                    <div class="mistake-box">
+                        <span class="mistake-number">1</span>
+                        <h3>Active Recall के बजाय Passive Reading</h3>
+                        <p><strong>Mistake:</strong> खुद को test किए बिना notes और textbooks को बार-बार read करना। यह actual learning के बिना familiarity की false sense create करता है।</p>
+                        <p><strong>यह क्यों नहीं काम करती:</strong> Passive reading strong neural pathways create नहीं करती। आप information recognize करते हैं लेकिन needed होने पर recall नहीं कर सकते।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Fix:</strong> Active recall techniques use करें। एक section read करने के after, book close करें और everything write down करें जो आप remember करते हैं। Then accuracy और completeness check करें।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mistake-box">
+                        <span class="mistake-number">2</span>
+                        <h3>Spaced Repetition के बजाय Cramming</h3>
+                        <p><strong>Mistake:</strong> Exams से right before everything at once learn करने की try करना। यह quick forgetting और high stress की ओर ले जाता है।</p>
+                        <p><strong>यह क्यों नहीं काम करती:</strong> Cramming आपकी working memory overload करती है without information को long-term storage में transfer किए।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Fix:</strong> Spaced repetition use करें। Material को multiple times study करें with sessions between increasing intervals। Optimal scheduling के लिए Anki जैसे apps use करें।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mistake-box">
+                        <span class="mistake-number">3</span>
+                        <h3>Study Sessions के during Multitasking</h3>
+                        <p><strong>Mistake:</strong> Studying while phones check करना, TV watch करना, या social media browse करना। यह attention fragments करता है और deep focus prevents करता है।</p>
+                        <p><strong>यह क्यों नहीं काम करती:</strong> दिमाग truly multitask नहीं कर सकता—यह tasks between rapidly switches करता है, efficiency और retention reducing करता है।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Fix:</strong> Pomodoro technique use करें: 25 minutes की focused study followed by 5-minute breaks। Study periods during all distractions remove करें।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mistake-box">
+                        <span class="mistake-number">4</span>
+                        <h3>Understanding के बिना Highlighting</h3>
+                        <p><strong>Mistake:</strong> Material के साथ truly engage किए बिना text highlight या underline करना। यह colorful notes create करता है लेकिन little actual learning।</p>
+                        <p><strong>यह क्यों नहीं काम करती:</strong> Highlighting एक mindless activity बन सकती है जो information की deeper processing promote नहीं करती।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Fix:</strong> Material understand करने के after only highlight करें। Feynman technique use करें: concepts को simple terms में explain करें जैसे कि आप किसी और को पढ़ा रहे हैं।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mistake-box">
+                        <span class="mistake-number">5</span>
+                        <h3>Practice और Application को Neglect करना</h3>
+                        <p><strong>Mistake:</strong> Practice application के बिना only read और review करना। यह sports watch करने के like है लेकिन never playing।</p>
+                        <p><strong>यह क्यों नहीं काम करती:</strong> Recognition (information know करना जब आप इसे see करते हैं) recall (information produce करना जब needed हो) से different है।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Fix:</strong> Past papers, problem sets, और self-testing के साथ practice करें। Knowledge को different contexts में apply करें understanding strengthen करने के लिए।</p>
+                        </div>
+                    </div>
+                    
+                    <h2>अपनी Study Habits का Test करें</h2>
+                    <p>यह quick quiz लें कि क्या आप ये common mistakes कर रहे हैं:</p>
+                    
+                    <div class="quiz-container">
+                        <div class="quiz-question">1. आप आमतौर पर अपने notes की review कैसे करते हैं?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option">A) उन्हें multiple times read करते हैं</div>
+                            <div class="quiz-option">B) उन्हें close करते हैं और information recall करने की try करते हैं</div>
+                            <div class="quiz-option">C) Important parts highlight करते हैं</div>
+                            <div class="quiz-option">D) उन्हें किसी और को explain करते हैं</div>
+                        </div>
+                        
+                        <div class="quiz-question">2. आप आमतौर पर exams की preparation कब start करते हैं?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option">A) Several weeks in advance with regular reviews</div>
+                            <div class="quiz-option">B) Exam से week before</div>
+                            <div class="quiz-option">C) Exam से few days before</div>
+                            <div class="quiz-option">D) Exam से night before</div>
+                        </div>
+                        
+                        <div class="quiz-question">3. Studying while distractions को आप कैसे handle करते हैं?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option">A) मैं अपना phone nearby रखता हूं और frequently check करता हूं</div>
+                            <div class="quiz-option">B) मैं TV या music playing के साथ study करता हूं</div>
+                            <div class="quiz-option">C) मैं website blockers use करता हूं और अपना phone another room में रखता हूं</div>
+                            <div class="quiz-option">D) मैं no distractions के साथ complete silence में study करता हूं</div>
+                        </div>
+                        
+                        <button class="btn" id="check-answers-hindi">अपने Answers Check करें</button>
+                    </div>
+                    
+                    <h2>Fix-It Plan: अपने Study Approach को Transform करें</h2>
+                    <p>अब जब आप common mistakes know करते हैं, यहाँ बताया गया है कि अपने study approach को कैसे transform करें:</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>Week 1</h3>
+                                <p>Multitasking eliminate करने पर focus करें। Pomodoro technique use करें और study sessions during all distractions remove करें।</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>Week 2</h3>
+                                <p>Active recall implement करें। Each study session after, अपने materials close करें और everything write down करें जो आप remember करते हैं।</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>Week 3</h3>
+                                <p>Spaced repetition use करना start करें। Increasing intervals में material review करने के लिए एक schedule create करें।</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>Week 4</h3>
+                                <p>Application पर focus करें। अपने study time का至少 50% problems और past papers के साथ practicing में spend करें।</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="interactive-box">
+                        <h3>अपनी Study Habits को Transform करने के लिए तैयार हैं?</h3>
+                        <p>हजारों students में शामिल हों जिन्होंने इन common mistakes को fix करके अपनी learning efficiency दोगुनी कर ली है</p>
+                        <button class="btn">Study Improvement Plan डाउनलोड करें</button>
+                        <a href="https://t.me/+Hmx5bsDLxsFjNDA1" target="_blank" class="btn">Telegram Channel Join करें</a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h2>Quick Navigation</h2>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="#" class="btn" style="text-align: center;">5 Mistakes</a>
+                        <a href="#" class="btn" style="text-align: center;">Mistake 1: Passive Reading</a>
+                        <a href="#" class="btn" style="text-align: center;">Mistake 2: Cramming</a>
+                        <a href="#" class="btn" style="text-align: center;">Mistake 3: Multitasking</a>
+                        <a href="#" class="btn" style="text-align: center;">Mistake 4: Highlighting</a>
+                        <a href="#" class="btn" style="text-align: center;">Mistake 5: No Practice</a>
+                        <a href="#" class="btn" style="text-align: center;">Fix-It Plan</a>
+                    </div>
+                    
+                    <h2>Resources</h2>
+                    <div class="tip-box">
+                        <h3>Free Study Improvement Plan</h3>
+                        <p>इन study mistakes को fix करने के लिए हमारा printable 4-week plan डाउनलोड करें</p>
+                        <button class="btn">Download Now</button>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h3>Recommended Tools</h3>
+                        <p>• Anki (spaced repetition flashcards)</p>
+                        <p>• Forest (focus timer)</p>
+                        <p>• Cold Turkey (website blocker)</p>
+                        <p>• Notion (study planning)</p>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h3>Study Habit Quiz</h3>
+                        <p>अपनी study habits analyze करने और improvement के areas identify करने के लिए हमारा comprehensive quiz लें।</p>
+                        <button class="btn">Full Quiz लें</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 PaperGuruji. All rights reserved.</p>
+            <p>Want more tips? Join our Telegram channel for daily study advice and resources.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Language toggle functionality
+        const englishBtn = document.getElementById('english-btn');
+        const hindiBtn = document.getElementById('hindi-btn');
+        const englishContent = document.getElementById('english-content');
+        const hindiContent = document.getElementById('hindi-content');
+        
+        englishBtn.addEventListener('click', () => {
+            englishBtn.classList.add('active');
+            hindiBtn.classList.remove('active');
+            englishContent.classList.add('active');
+            hindiContent.classList.remove('active');
+        });
+        
+        hindiBtn.addEventListener('click', () => {
+            hindiBtn.classList.add('active');
+            englishBtn.classList.remove('active');
+            hindiContent.classList.add('active');
+            englishContent.classList.remove('active');
+        });
+        
+        // Quiz functionality
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selected class from siblings
+                const siblings = this.parentElement.children;
+                for (let i = 0; i < siblings.length; i++) {
+                    siblings[i].classList.remove('selected');
+                }
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+            });
+        });
+        
+        document.getElementById('check-answers').addEventListener('click', function() {
+            alert("The best answers are:\n\n1. B) Close them and try to recall the information\n2. A) Several weeks in advance with regular reviews\n3. C) I use website blockers and put my phone in another room\n\nHow did you do? Implementing these strategies will significantly improve your study efficiency!");
+        });
+        
+        document.getElementById('check-answers-hindi').addEventListener('click', function() {
+            alert("सबसे अच्छे answers हैं:\n\n1. B) उन्हें close करते हैं और information recall करने की try करते हैं\n2. A) Several weeks in advance with regular reviews\n3. C) मैं website blockers use करता हूं और अपना phone another room में रखता हूं\n\nआपने कैसा प्रदर्शन किया? इन strategies को implement करने से आपकी study efficiency significantly improve होगी!");
+        });
+        
+        // Interactive functionality
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if(this.textContent === 'Download Study Improvement Plan' || this.textContent === 'Download Now' || 
+                   this.textContent === 'Study Improvement Plan डाउनलोड करें') {
+                    alert('Redirecting to download page...');
+                } else if(!this.hasAttribute('href') && this.id !== 'check-answers' && this.id !== 'check-answers-hindi') {
+                    e.preventDefault();
+                    alert('Feature coming soon! Check our Telegram channel for updates.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

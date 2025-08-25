@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PaperGuruji — Articles</title>
+
+  <!-- Anton Font Import -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000; /* black background */
+      color: #000;
+    }
+
+    /* Page wrapper for animation */
+    .page {
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+    .page.slide-out {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    .page.slide-in {
+      animation: slideIn 0.6s ease;
+    }
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: linear-gradient(to right, #ffe7b3, #ffb3d9);
+      border-radius: 0 0 20px 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .telegram-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .telegram-icon {
+      width: 40px;
+      height: 40px;
+      background: #4c8cff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 20px;
+    }
+
+    .join-btn {
+      padding: 8px 16px;
+      background: #00ff44;
+      border-radius: 20px;
+      font-weight: bold;
+      border: 3px solid #ff4ce6;
+      text-decoration: none;
+      color: #000;
+    }
+
+    /* Back button */
+    .back-btn {
+      margin: 15px;
+      padding: 8px 16px;
+      background: white;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .back-btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* Article List */
+    .article-list {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .article-card {
+      background: linear-gradient(to right, #a24fbd, #4c8cff);
+      padding: 20px;
+      border-radius: 20px;
+      font-size: 28px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      font-family: 'Anton', sans-serif; /* Anton font */
+      text-shadow: 0 0 6px rgba(255,255,255,0.8),
+                   0 0 12px rgba(255,255,255,0.6); /* Glow */
+    }
+    .article-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(142, 45, 226, 0.8);
+    }
+
+    /* Click animation */
+    .article-card.clicked {
+      animation: explode 0.6s forwards;
+    }
+    @keyframes explode {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+      100% { transform: scale(0); opacity: 0; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .article-card {
+        font-size: 20px;
+        padding: 15px;
+      }
+      .join-btn {
+        padding: 6px 12px;
+        font-size: 14px;
+      }
+      .telegram-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page slide-in">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">paperguruji</div>
+    <div class="telegram-box">
+      <div class="telegram-icon">✈️</div>
+      <a href="https://t.me/paperguruji_bot" target="_blank" class="join-btn">join now</a>
+    </div>
+  </header>
+
+  <!-- Back Button -->
+  <button class="back-btn" onclick="goHome()">← Back</button>
+
+  <!-- Article List -->
+  <section class="article-list">
+    <div class="article-card" onclick="openArticle(this, 'article1.html')">🚀How to Cover Entire Syllabus in Half the Time</div>
+    <div class="article-card" onclick="openArticle(this, 'article2.html')">🤯10 Secret Study Hacks That Schools & Coaching Never Teach You</div>
+    <div class="article-card" onclick="openArticle(this, 'article3.html')">🧠 Photographic Memory Banaye: Scientific Tricks to Remember Anything Forever
+(Why it works: "Photographic Memory" ek powerful dream hai har student ka. "Scientific" word credibility add karta hai.)
+</div>
+    <div class="article-card" onclick="openArticle(this, 'article4.html')">💪 Exam Hall Me Confidence Kaise Banaye? Last Minute Anxiety Ko Beat Karne Ke Tips</div>
+    <div class="article-card" onclick="openArticle(this, 'article5.html')">🤯 5 Common Study Mistakes Jo Aapki Mehnat Ka Faida Nahi Hone Deti</div>
+  </section>
+
+</div>
+
+<script>
+  // Back button
+  function goHome() {
+    const page = document.querySelector(".page");
+    page.classList.add("slide-out");
+    setTimeout(() => {
+      window.location.href = "index.html"; // back to home
+    }, 600);
+  }
+
+  // Article click with animation
+  function openArticle(element, link) {
+    element.classList.add("clicked");
+    setTimeout(() => {
+      window.location.href = link;
+    }, 600);
+  }
+</script>
+</body>
+</html>

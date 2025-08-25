@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topper's Secret Study Hacks - PaperGuruji</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #4c8cff 0%, #a24fbd 100%);
+            color: #fff;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .toggle-btn {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 2px solid #4c8cff;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-btn.active {
+            background: #4c8cff;
+            box-shadow: 0 0 15px rgba(76, 140, 255, 0.5);
+        }
+        
+        .toggle-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            color: #4c8cff;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: #a24fbd;
+            margin-bottom: 20px;
+        }
+        
+        .hook {
+            background: linear-gradient(135deg, rgba(76, 140, 255, 0.8) 0%, rgba(162, 79, 189, 0.8) 100%);
+            padding: 25px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 7fr 3fr;
+            gap: 30px;
+        }
+        
+        .main-content {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .sidebar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        h2 {
+            color: #4c8cff;
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #a24fbd;
+        }
+        
+        h3 {
+            color: #a24fbd;
+            margin: 20px 0 12px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .strategy-box {
+            background: rgba(76, 140, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #4c8cff;
+            margin: 20px 0;
+        }
+        
+        .tip-box {
+            background: rgba(162, 79, 189, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #a24fbd;
+        }
+        
+        .interactive-box {
+            background: rgba(76, 140, 255, 0.2);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #4c8cff;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #a24fbd;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #4c8cff;
+        }
+        
+        .timeline-point {
+            text-align: center;
+            position: relative;
+            width: 20%;
+        }
+        
+        .timeline-point::before {
+            content: '';
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #a24fbd;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        
+        .timeline-content {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .study-method {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .method-icon {
+            font-size: 2.5rem;
+            color: #4c8cff;
+            margin-right: 20px;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .method-content {
+            flex: 1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            color: white;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #4c8cff;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        /* Language Content */
+        .language-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .language-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline {
+                flex-direction: column;
+            }
+            
+            .timeline-point {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+            
+            .timeline::before {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Language Toggle -->
+        <div class="language-toggle">
+            <button class="toggle-btn active" id="english-btn">English</button>
+            <button class="toggle-btn" id="hindi-btn">हिंदी</button>
+        </div>
+        
+        <!-- English Content -->
+        <div class="language-content active" id="english-content">
+            <header>
+                <h1>Topper's Secret Study Hacks That Schools Never Tell You</h1>
+                <p class="subtitle">Smart Study Strategies That Actually Work</p>
+                <p>Published by PaperGuruji • Updated: august 22, 2025</p>
+            </header>
+            
+            <div class="hook">
+                <p><i class="fas fa-lightbulb"></i> <strong>Did you know?</strong> Top students don't necessarily study harder—they study smarter. With the right techniques, you can cut your study time in half while improving your results. This guide reveals how.</p>
+            </div>
+            
+            <div class="content">
+                <div class="main-content">
+                    <h2>The Problem With Traditional Studying</h2>
+                    <p>Most students follow the same ineffective study patterns: reading and re-reading material, highlighting textbooks, and cramming right before exams. Research shows these methods are among the least effective ways to learn and retain information.</p>
+                    
+                    <div class="strategy-box">
+                        <h3>Why These Methods Fail:</h3>
+                        <p>• Passive reading creates a false sense of familiarity with the material</p>
+                        <p>• Cramming leads to quick forgetting—usually within days or hours</p>
+                        <p>• Without proper spacing, information doesn't transfer to long-term memory</p>
+                    </div>
+                    
+                    <h2>The Solution: Active Learning & Spaced Repetition</h2>
+                    <p>Effective studying isn't about how much time you put in, but how you use that time. The two most powerful principles for rapid learning are:</p>
+                    
+                    <div class="study-method">
+                        <div class="method-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="method-content">
+                            <h3>Active Recall</h3>
+                            <p>Testing yourself on material rather than just reviewing it. This strengthens neural pathways and makes retrieval easier during exams.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="study-method">
+                        <div class="method-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <div class="method-content">
+                            <h3>Spaced Repetition</h3>
+                            <p>Reviewing information at increasing intervals to combat the forgetting curve. This is the opposite of cramming.</p>
+                        </div>
+                    </div>
+                    
+                    <h2>The 4-Step Framework for Rapid Syllabus Coverage</h2>
+                    
+                    <div class="timeline">
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>1. Preview</h3>
+                                <p>Quickly scan the material to get the big picture before diving into details.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>2. Active Reading</h3>
+                                <p>Engage with the material by asking questions and taking smart notes.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>3. Recall</h3>
+                                <p>Close the book and test your understanding without looking at the material.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>4. Review</h3>
+                                <p>Schedule strategic review sessions to move knowledge to long-term memory.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2>Advanced Techniques for Maximum Efficiency</h2>
+                    
+                    <h3>The Feynman Technique</h3>
+                    <p>Named after Nobel Prize-winning physicist Richard Feynman, this method involves explaining concepts in simple language as if teaching someone else.</p>
+                    
+                    <div class="interactive-box">
+                        <h3>Try It Now: The Feynman Technique</h3>
+                        <p>Pick a concept you're learning and try to explain it in simple terms:</p>
+                        <textarea placeholder="Type your explanation here..." rows="4"></textarea>
+                        <button class="btn">Submit</button>
+                    </div>
+                    
+                    <h3>The Pomodoro Technique</h3>
+                    <p>Work in focused 25-minute intervals followed by 5-minute breaks. After four cycles, take a longer 15-30 minute break.</p>
+                    
+                    <div class="tip-box">
+                        <p><i class="fas fa-lightbulb"></i> <strong>Pro Tip:</strong> Use your breaks to move around, hydrate, or do quick stretches. Avoid checking social media during breaks as it can reduce focus.</p>
+                    </div>
+                    
+                    <h2>Sample Study Schedule (2-Week Intensive)</h2>
+                    <p>Here's how to structure your days for maximum syllabus coverage:</p>
+                    
+                    <div class="strategy-box">
+                        <h3>Morning (3 hours)</h3>
+                        <p>• 6:00 AM - 7:00 AM: Review previous day's material</p>
+                        <p>• 7:15 AM - 9:15 AM: Focus on difficult subjects (2 Pomodoro sessions)</p>
+                        
+                        <h3>Afternoon (3 hours)</h3>
+                        <p>• 3:00 PM - 5:00 PM: New topics (2 Pomodoro sessions)</p>
+                        <p>• 5:00 PM - 6:00 PM: Practice problems or past papers</p>
+                        
+                        <h3>Evening (2 hours)</h3>
+                        <p>• 8:00 PM - 9:00 PM: Quick review of day's learning</p>
+                        <p>• 9:00 PM - 10:00 PM: Planning for next day</p>
+                    </div>
+                    
+                    <div class="interactive-box">
+                        <h3>Ready to Transform Your Study Habits?</h3>
+                        <p>Join thousands of students who've doubled their learning speed using these methods</p>
+                        <button class="btn">Download Study Planner</button>
+                        <a href="https://t.me/+Hmx5bsDLxsFjNDA1" target="_blank" class="btn">Join Telegram Channel</a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h2>Quick Navigation</h2>
+                    <ul style="list-style-type: none;">
+                        <li><a href="#" class="btn" style="display: block; text-align: center; margin: 10px 0;">The Problem</a></li>
+                        <li><a href="#" class="btn" style="display: block; text-align: center; margin: 10px 0;">The Solution</a></li>
+                        <li><a href="#" class="btn" style="display: block; text-align: center; margin: 10px 0;">4-Step Framework</a></li>
+                        <li><a href="#" class="btn" style="display: block; text-align: center; margin: 10px 0;">Advanced Techniques</a></li>
+                        <li><a href="#" class="btn" style="display: block; text-align: center; margin: 10px 0;">Sample Schedule</a></li>
+                    </ul>
+                    
+                    <h2>Resources</h2>
+                    <div class="tip-box">
+                        <h3>Free Study Planner</h3>
+                        <p>Download our printable study schedule template</p>
+                        <button class="btn">Download Now</button>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h3>Recommended Apps</h3>
+                        <p>• Anki (flashcards)</p>
+                        <p>• Forest (focus timer)</p>
+                        <p>• Notion (note-taking)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hindi Content -->
+        <div class="language-content" id="hindi-content">
+            <header>
+                <h1>टॉपर्स के सीक्रेट स्टडी हैक्स जो स्कूल्स कभी नहीं बताते</h1>
+                <p class="subtitle">स्मार्ट स्टडी स्ट्रैटेजीज जो वास्तव में काम करती हैं</p>
+                <p>PaperGuruji द्वारा प्रकाशित • अंतिम अपडेट: 10 जून, 2023</p>
+            </header>
+            
+            <div class="hook">
+                <p><i class="fas fa-lightbulb"></i> <strong>क्या आप जानते हैं?</strong> टॉप करने वाले छात्र जरूरी नहीं कि ज्यादा पढ़ते हैं—बल्कि वे smart पढ़ते हैं। सही तकनीकों से, आप अपना study time आधा कर सकते हैं और results improve कर सकते हैं। यह गाइड बताती है कैसे।</p>
+            </div>
+            
+            <div class="content">
+                <div class="main-content">
+                    <h2>पारंपरिक पढ़ाई में समस्या</h2>
+                    <p>ज्यादातर छात्र एक जैसी ineffective study patterns follow करते हैं: बार-बार पढ़ना, textbooks में highlight करना, और exams से ठीक पहले रट्टा मारना। Research बताती है कि ये तरीके सीखने और याद रखने के सबसे कम effective तरीकों में से हैं।</p>
+                    
+                    <div class="strategy-box">
+                        <h3>ये तरीके क्यों fail करते हैं:</h3>
+                        <p>• Passive reading पढ़ाई के सामग्री के साथ एक झूठी familiarity पैदा करती है</p>
+                        <p>• रट्टा मारना (cramming) जल्दी भूलने की ओर ले जाता है—आमतौर पर कुछ दिनों या घंटों में</p>
+                        <p>• बिना proper spacing के, information long-term memory में transfer नहीं होती</p>
+                    </div>
+                    
+                    <h2>समाधान: Active Learning और Spaced Repetition</h2>
+                    <p>Effective studying इस बारे में नहीं है कि आप कितना समय देते हैं, बल्कि इस बारे में है कि आप उस समय का उपयोग कैसे करते हैं। तेजी से सीखने के दो सबसे शक्तिशाली सिद्धांत हैं:</p>
+                    
+                    <div class="study-method">
+                        <div class="method-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="method-content">
+                            <h3>Active Recall (सक्रिय याद करना)</h3>
+                            <p>सिर्फ review करने के बजाय खुद को test करना। यह neural pathways को मजबूत करता है और exams के दौरान retrieval को आसान बनाता है।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="study-method">
+                        <div class="method-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <div class="method-content">
+                            <h3>Spaced Repetition (अंतरालित दोहराव)</h3>
+                            <p>भूलने की प्रक्रिया (forgetting curve) से लड़ने के लिए बढ़ते intervals में information को review करना। यह cramming के exactly opposite है।</p>
+                        </div>
+                    </div>
+                    
+                    <h2>Rapid Syllabus Coverage के लिए 4-चरणीय Framework</h2>
+                    
+                    <div class="timeline">
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>1. Preview (पूर्वावलोकन)</h3>
+                                <p>details में जाने से पहले material को quickly scan करके big picture प्राप्त करें।</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>2. Active Reading (सक्रिय पठन)</h3>
+                                <p>questions पूछकर और smart notes लेकर material के साथ engage करें।</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>3. Recall (याद करना)</h3>
+                                <p>किताब बंद करें और material को देखे बिना अपनी understanding को test करें।</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-point">
+                            <div class="timeline-content">
+                                <h3>4. Review (समीक्षा)</h3>
+                                <p>knowledge को long-term memory में ले जाने के लिए strategic review sessions schedule करें।</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h2>Maximum Efficiency के लिए Advanced Techniques</h2>
+                    
+                    <h3>Feynman Technique</h3>
+                    <p>Nobel Prize-winning physicist Richard Feynman के नाम पर, इस method में concepts को simple language में explain करना शामिल है जैसे कि आप किसी और को पढ़ा रहे हैं।</p>
+                    
+                    <div class="interactive-box">
+                        <h3>अभी आजमाएं: Feynman Technique</h3>
+                        <p>कोई concept चुनें जो आप सीख रहे हैं और इसे simple terms में explain करने की कोशिश करें:</p>
+                        <textarea placeholder="Type your explanation here..." rows="4"></textarea>
+                        <button class="btn">Submit</button>
+                    </div>
+                    
+                    <h3>Pomodoro Technique</h3>
+                    <p>5-minute breaks के साथ focused 25-minute intervals में काम करें। चार cycles के बाद, longer 15-30 minute break लें।</p>
+                    
+                    <div class="tip-box">
+                        <p><i class="fas fa-lightbulb"></i> <strong>Pro Tip:</strong> अपने breaks का उपयोग movement करने, hydrate करने या quick stretches करने के लिए करें। Breaks के दौरान social media check करने से बचें क्योंकि इससे focus कम हो सकता है।</p>
+                    </div>
+                    
+                    <h2>Sample Study Schedule (2-Week Intensive)</h2>
+                    <p>Maximum syllabus coverage के लिए अपने दिनों को structure करने का तरीका:</p>
+                    
+                    <div class="strategy-box">
+                        <h3>Morning (3 hours)</h3>
+                        <p>• 6:00 AM - 7:00 AM: पिछले दिन के material की review</p>
+                        <p>• 7:15 AM - 9:15 AM: difficult subjects पर focus (2 Pomodoro sessions)</p>
+                        
+                        <h3>Afternoon (3 hours)</h3>
+                        <p>• 3:00 PM - 5:00 PM: New topics (2 Pomodoro sessions)</p>
+                        <p>• 5:00 PM - 6:00 PM: Practice problems या past papers</p>
+                        
+                        <h3>Evening (2 hours)</h3>
+                        <p>• 8:00 PM - 9:00 PM: दिन की learning की quick review</p>
+                        <p>• 9:00 PM - 10:00 PM: अगले दिन की planning</p>
+                    </div>
+                    
+                    <div class="interactive-box">
+                        <h3>अपनी Study Habits बदलने के लिए तैयार हैं?</h3>
+                        <p>हजारों students में शामिल हों जिन्होंने इन methods का उपयोग करके अपनी learning speed दोगुनी कर ली है</p>
+                        <button class="btn">Download Study Planner</button>
+                        <a href="https://t.me/+Hmx5bsDLxsFjNDA1" target="_blank" class="btn">Join Telegram Channel</a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h2>Quick Navigation</h2>
+                    <ul style="list-style-type: none;">
+                        <li><a href="#" class="btn" style="display: block; text-align: center; margin: 10px 0;">समस्या</a></li>
+                        <li><a href="#" class="btn" style="display: block; text-align: center; margin: 10px 0;">समाधान</a></li>
+                        <li><a href="#" class="btn" style="display: block; text-align: center; margin: 10px 0;">4-चरणीय Framework</a></li>
+                        <li><a href="#" class="btn" style="display: block; text-align: center; margin: 10px 0;">Advanced Techniques</a></li>
+                        <li><a href="#" class="btn" style="display: block; text-align: center; margin: 10px 0;">Sample Schedule</a></li>
+                    </ul>
+                    
+                    <h2>Resources</h2>
+                    <div class="tip-box">
+                        <h3>Free Study Planner</h3>
+                        <p>हमारा printable study schedule template डाउनलोड करें</p>
+                        <button class="btn">Download Now</button>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h3>Recommended Apps</h3>
+                        <p>• Anki (flashcards)</p>
+                        <p>• Forest (focus timer)</p>
+                        <p>• Notion (note-taking)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 PaperGuruji. All rights reserved.</p>
+            <p>Want more tips? Join our Telegram channel for daily study advice and resources.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Language toggle functionality
+        const englishBtn = document.getElementById('english-btn');
+        const hindiBtn = document.getElementById('hindi-btn');
+        const englishContent = document.getElementById('english-content');
+        const hindiContent = document.getElementById('hindi-content');
+        
+        englishBtn.addEventListener('click', () => {
+            englishBtn.classList.add('active');
+            hindiBtn.classList.remove('active');
+            englishContent.classList.add('active');
+            hindiContent.classList.remove('active');
+        });
+        
+        hindiBtn.addEventListener('click', () => {
+            hindiBtn.classList.add('active');
+            englishBtn.classList.remove('active');
+            hindiContent.classList.add('active');
+            englishContent.classList.remove('active');
+        });
+        
+        // Interactive functionality
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function() {
+                if(this.textContent === 'Submit') {
+                    alert('Great job! Review your explanation and identify any gaps in understanding.');
+                } else if(this.textContent === 'Download Study Planner' || this.textContent === 'Download Now') {
+                    alert('Redirecting to download page...');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

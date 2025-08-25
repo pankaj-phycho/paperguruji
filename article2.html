@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Secret Study Hacks - PaperGuruji</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #4c8cff 0%, #a24fbd 100%);
+            color: #fff;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .toggle-btn {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 2px solid #4c8cff;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-btn.active {
+            background: #4c8cff;
+            box-shadow: 0 0 15px rgba(76, 140, 255, 0.5);
+        }
+        
+        .toggle-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            color: #4c8cff;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: #a24fbd;
+            margin-bottom: 20px;
+        }
+        
+        .hook {
+            background: linear-gradient(135deg, rgba(76, 140, 255, 0.8) 0%, rgba(162, 79, 189, 0.8) 100%);
+            padding: 25px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 7fr 3fr;
+            gap: 30px;
+        }
+        
+        .main-content {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .sidebar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        h2 {
+            color: #4c8cff;
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #a24fbd;
+        }
+        
+        h3 {
+            color: #a24fbd;
+            margin: 20px 0 12px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .strategy-box {
+            background: rgba(76, 140, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #4c8cff;
+            margin: 20px 0;
+        }
+        
+        .tip-box {
+            background: rgba(162, 79, 189, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #a24fbd;
+        }
+        
+        .interactive-box {
+            background: rgba(76, 140, 255, 0.2);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #4c8cff;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #a24fbd;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #4c8cff;
+        }
+        
+        .timeline-point {
+            text-align: center;
+            position: relative;
+            width: 20%;
+        }
+        
+        .timeline-point::before {
+            content: '';
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #a24fbd;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        
+        .timeline-content {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .study-method {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .method-icon {
+            font-size: 2.5rem;
+            color: #4c8cff;
+            margin-right: 20px;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .method-content {
+            flex: 1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            color: white;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #4c8cff;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .hack {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #4c8cff;
+        }
+        
+        .hack-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #a24fbd;
+            margin-right: 15px;
+            float: left;
+        }
+        
+        /* Language Content */
+        .language-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .language-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline {
+                flex-direction: column;
+            }
+            
+            .timeline-point {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+            
+            .timeline::before {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Language Toggle -->
+        <div class="language-toggle">
+            <button class="toggle-btn active" id="english-btn">English</button>
+            <button class="toggle-btn" id="hindi-btn">हिंदी</button>
+        </div>
+        
+        <!-- English Content -->
+        <div class="language-content active" id="english-content">
+            <header>
+                <h1>10 Secret Study Hacks That Schools & Coaching Never Teach You</h1>
+                <p class="subtitle">Unlock Your True Learning Potential With These Powerful Techniques</p>
+                <p>Published by PaperGuruji • Updated: August 22, 2025</p>
+            </header>
+            
+            <div class="hook">
+                <p><i class="fas fa-lightbulb"></i> <strong>Did you know?</strong> The top 1% of students don't necessarily study more—they study differently. These secret techniques can help you learn faster, remember more, and achieve better results in less time.</p>
+            </div>
+            
+            <div class="content">
+                <div class="main-content">
+                    <h2>The Hidden World of Effective Studying</h2>
+                    <p>While schools and coaching centers focus on completing syllabus and practicing problems, they often miss teaching the most effective learning strategies. These 10 secret hacks have been scientifically proven to enhance learning efficiency.</p>
+                    
+                    <div class="hack">
+                        <span class="hack-number">1</span>
+                        <h3>The Feynman Technique</h3>
+                        <p>Named after Nobel Prize-winning physicist Richard Feynman, this method involves explaining concepts in simple language as if teaching someone else. If you can't explain it simply, you don't understand it well enough.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>How to use it:</strong> Choose a concept, explain it in simple terms, identify gaps in your explanation, review and simplify further.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">2</span>
+                        <h3>Spaced Repetition</h3>
+                        <p>This technique involves reviewing information at increasing intervals to combat the forgetting curve. Instead of cramming, you schedule reviews strategically to move knowledge to long-term memory.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>How to use it:</strong> Use apps like Anki or create a review schedule: 1 day after learning, 3 days after, 1 week after, 2 weeks after, etc.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">3</span>
+                        <h3>Active Recall</h3>
+                        <p>Testing yourself on material rather than just reviewing it. This strengthens neural pathways and makes retrieval easier during exams.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>How to use it:</strong> After reading a chapter, close the book and write down everything you remember. Then check for accuracy and completeness.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">4</span>
+                        <h3>The Pomodoro Technique</h3>
+                        <p>Work in focused 25-minute intervals followed by 5-minute breaks. After four cycles, take a longer 15-30 minute break.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>How to use it:</strong> Set a timer for 25 minutes, focus intensely, then take a break. Repeat this cycle for optimal productivity.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">5</span>
+                        <h3>Interleaved Practice</h3>
+                        <p>Mixing different topics or types of problems during study sessions rather than focusing on just one topic at a time.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>How to use it:</strong> Instead of studying only algebra for 2 hours, mix algebra, geometry, and calculus problems in a single session.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">6</span>
+                        <h3>Mind Palace Technique</h3>
+                        <p>Also known as the Method of Loci, this ancient technique involves visualizing information in familiar spatial environments.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>How to use it:</strong> Associate information with specific locations in your house, then take a mental walk to recall it.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">7</span>
+                        <h3>Dual Coding</h3>
+                        <p>Combining verbal and visual information to enhance memory. Creating diagrams, mind maps, or illustrations alongside written notes.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>How to use it:</strong> When taking notes, create simple drawings or diagrams that represent the concepts you're learning.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">8</span>
+                        <h3>Sleep Learning</h3>
+                        <p>While you can't learn completely new information while sleeping, sleep plays a crucial role in memory consolidation.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>How to use it:</strong> Review difficult material just before sleep. Listen to audio summaries while falling asleep.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">9</span>
+                        <h3>Exercise Before Studying</h3>
+                        <p>Physical activity increases blood flow to the brain, releasing chemicals that enhance memory and learning.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>How to use it:</strong> 20-30 minutes of moderate exercise before study sessions can significantly improve focus and retention.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">10</span>
+                        <h3>Teaching Others</h3>
+                        <p>Explaining concepts to someone else forces you to organize your knowledge and identify gaps in understanding.</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>How to use it:</strong> Form study groups where you take turns teaching concepts to each other.</p>
+                        </div>
+                    </div>
+                    
+                    <h2>Implementing These Hacks in Your Study Routine</h2>
+                    <p>Now that you know these powerful techniques, the key is implementation. Start with one or two hacks that resonate with you, and gradually incorporate more into your routine.</p>
+                    
+                    <div class="interactive-box">
+                        <h3>Ready to Transform Your Study Habits?</h3>
+                        <p>Join thousands of students who've doubled their learning speed using these methods</p>
+                        <button class="btn">Download Study Planner</button>
+                        <a href="https://t.me/+Hmx5bsDLxsFjNDA1" target="_blank" class="btn">Join Telegram Channel</a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h2>Quick Navigation</h2>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="#" class="btn" style="text-align: center;">Feynman Technique</a>
+                        <a href="#" class="btn" style="text-align: center;">Spaced Repetition</a>
+                        <a href="#" class="btn" style="text-align: center;">Active Recall</a>
+                        <a href="#" class="btn" style="text-align: center;">Pomodoro Technique</a>
+                        <a href="#" class="btn" style="text-align: center;">All Hacks</a>
+                    </div>
+                    
+                    <h2>Resources</h2>
+                    <div class="tip-box">
+                        <h3>Free Study Planner</h3>
+                        <p>Download our printable study schedule template</p>
+                        <button class="btn">Download Now</button>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h3>Recommended Apps</h3>
+                        <p>• Anki (flashcards with spaced repetition)</p>
+                        <p>• Forest (focus timer)</p>
+                        <p>• Notion (note-taking and organization)</p>
+                        <p>• XMind (mind mapping)</p>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h3>Weekly Challenge</h3>
+                        <p>Try one new study hack each week and note how it affects your learning efficiency.</p>
+                        <button class="btn">Join Challenge</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hindi Content -->
+        <div class="language-content" id="hindi-content">
+            <header>
+                <h1>10 सीक्रेट स्टडी हैक्स जो स्कूल और कोचिंग कभी नहीं सिखाते</h1>
+                <p class="subtitle">इन शक्तिशाली तकनीकों के साथ अपनी सीखने की क्षमता को अनलॉक करें</p>
+                <p>PaperGuruji द्वारा प्रकाशित • अंतिम अपडेट: 22 अगस्त, 2025</p>
+            </header>
+            
+            <div class="hook">
+                <p><i class="fas fa-lightbulb"></i> <strong>क्या आप जानते हैं?</strong> टॉप 1% छात्र जरूरी नहीं कि ज्यादा पढ़ते हैं—वे अलग तरीके से पढ़ते हैं। ये secret techniques आपको तेजी से सीखने, अधिक याद रखने और कम समय में बेहतर results achieved करने में मदद कर सकते हैं।</p>
+            </div>
+            
+            <div class="content">
+                <div class="main-content">
+                    <h2>Effective Studying की Hidden दुनिया</h2>
+                    <p>जबकि स्कूल और coaching centers syllabus complete करने और problems practice करने पर focus करते हैं, वे अक्सर सबसे effective learning strategies सिखाना miss कर जाते हैं। ये 10 secret hacks scientifically proven हैं जो learning efficiency enhance करते हैं।</p>
+                    
+                    <div class="hack">
+                        <span class="hack-number">1</span>
+                        <h3>Feynman Technique</h3>
+                        <p>Nobel Prize-winning physicist Richard Feynman के नाम पर, इस method में concepts को simple language में explain करना शामिल है जैसे कि आप किसी और को पढ़ा रहे हैं। यदि आप इसे simply explain नहीं कर सकते, तो आप इसे well enough समझते नहीं हैं।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>कैसे use करें:</strong> एक concept चुनें, इसे simple terms में explain करें, अपने explanation में gaps identify करें, review करें और further simplify करें।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">2</span>
+                        <h3>Spaced Repetition (अंतरालित दोहराव)</h3>
+                        <p>इस technique में forgetting curve से लड़ने के लिए increasing intervals में information review करना शामिल है। Cramming करने के बजाय, आप knowledge को long-term memory में ले जाने के ल strategically reviews schedule करते हैं।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>कैसे use करें:</strong> Anki जैसे apps use करें या एक review schedule बनाएं: सीखने के 1 दिन बाद, 3 दिन बाद, 1 week बाद, 2 weeks बाद, आदि।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">3</span>
+                        <h3>Active Recall (सक्रिय याद करना)</h3>
+                        <p>सिर्फ review करने के बजाय खुद को test करना। यह neural pathways को strengthen करता है और exams के दौरान retrieval को easier बनाता है।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>कैसे use करें:</strong> एक chapter पढ़ने के बाद, किताब बंद करें और आपको जो कुछ भी याद है उसे लिखें। फिर accuracy और completeness check करें।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">4</span>
+                        <h3>Pomodoro Technique</h3>
+                        <p>5-minute breaks के साथ focused 25-minute intervals में काम करें। चार cycles के बाद, longer 15-30 minute break लें।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>कैसे use करें:</strong> 25 minutes के लिए एक timer set करें, intensely focus करें, फिर break लें। Optimal productivity के लिए इस cycle को repeat करें।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">5</span>
+                        <h3>Interleaved Practice (अंतर्मिश्रित अभ्यास)</h3>
+                        <p>Study sessions के दौरान एक समय में just one topic पर focus करने के बजाय different topics या types of problems को mix करना।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>कैसे use करें:</strong> 2 hours के लिए only algebra पढ़ने के बजाय, single session में algebra, geometry, और calculus problems mix करें।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">6</span>
+                        <h3>Mind Palace Technique (मन का महल तकनीक)</h3>
+                        <p>इसे Method of Loci के रूप में भी जाना जाता है, इस ancient technique में familiar spatial environments में information visualize करना शामिल है।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>कैसे use करें:</strong> Information को अपने house के specific locations के साथ associate करें, फिर इसे recall करने के लिए mental walk पर जाएं।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">7</span>
+                        <h3>Dual Coding (दोहरी कोडिंग)</h3>
+                        <p>Memory enhance करने के लिए verbal और visual information combine करना। Written notes के साथ diagrams, mind maps, या illustrations create करना।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>कैसे use करें:</strong> Notes लेते समय, simple drawings या diagrams create करें जो concepts represent करते हैं जो आप सीख रहे हैं।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">8</span>
+                        <h3>Sleep Learning (नींद में सीखना)</h3>
+                        <p>हालांकि आप sleeping while completely new information नहीं सीख सकते, लेकिन memory consolidation में sleep एक crucial role play करती है।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>कैसे use करें:</strong> Sleep से just before difficult material review करें। सोते समय audio summaries listen करें।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">9</span>
+                        <h3>Exercise Before Studying (पढ़ाई से पहले व्यायाम)</h3>
+                        <p>Physical activity brain में blood flow increases करती है, chemicals release करती है जो memory और learning enhance करती हैं।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>कैसे use करें:</strong> Study sessions से पहले 20-30 minutes की moderate exercise significantly improve कर सकती है focus और retention।</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hack">
+                        <span class="hack-number">10</span>
+                        <h3>Teaching Others (दूसरों को पढ़ाना)</h3>
+                        <p>किसी और को concepts explain करना आपको अपने knowledge organize करने और understanding में gaps identify करने के लिए मजबूर करता है।</p>
+                        <div class="tip-box">
+                            <p><i class="fas fa-lightbulb"></i> <strong>कैसे use करें:</strong> Study groups form करें जहां आप बारी-बारी से एक-दूसरे को concepts सिखाते हैं।</p>
+                        </div>
+                    </div>
+                    
+                    <h2>अपनी Study Routine में इन हैक्स को Implement करना</h2>
+                    <p>अब जब आप इन powerful techniques को जानते हैं, तो key implementation है। एक या दो हैक्स के साथ start करें जो आपके साथ resonate करते हैं, और gradually अपनी routine में और अधिक incorporate करें।</p>
+                    
+                    <div class="interactive-box">
+                        <h3>अपनी Study Habits बदलने के लिए तैयार हैं?</h3>
+                        <p>हजारों students में शामिल हों जिन्होंने इन methods का उपयोग करके अपनी learning speed दोगुनी कर ली है</p>
+                        <button class="btn">Download Study Planner</button>
+                        <a href="https://t.me/+Hmx5bsDLxsFjNDA1" target="_blank" class="btn">Join Telegram Channel</a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <h2>Quick Navigation</h2>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="#" class="btn" style="text-align: center;">Feynman Technique</a>
+                        <a href="#" class="btn" style="text-align: center;">Spaced Repetition</a>
+                        <a href="#" class="btn" style="text-align: center;">Active Recall</a>
+                        <a href="#" class="btn" style="text-align: center;">Pomodoro Technique</a>
+                        <a href="#" class="btn" style="text-align: center;">All Hacks</a>
+                    </div>
+                    
+                    <h2>Resources</h2>
+                    <div class="tip-box">
+                        <h3>Free Study Planner</h3>
+                        <p>हमारा printable study schedule template डाउनलोड करें</p>
+                        <button class="btn">Download Now</button>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h3>Recommended Apps</h3>
+                        <p>• Anki (spaced repetition के साथ flashcards)</p>
+                        <p>• Forest (focus timer)</p>
+                        <p>• Notion (note-taking और organization)</p>
+                        <p>• XMind (mind mapping)</p>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <h3>Weekly Challenge</h3>
+                        <p>प्रति week एक new study hack try करें और note करें कि यह आपकी learning efficiency को कैसे affect करता है।</p>
+                        <button class="btn">Join Challenge</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 PaperGuruji. All rights reserved.</p>
+            <p>Want more tips? Join our Telegram channel for daily study advice and resources.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Language toggle functionality
+        const englishBtn = document.getElementById('english-btn');
+        const hindiBtn = document.getElementById('hindi-btn');
+        const englishContent = document.getElementById('english-content');
+        const hindiContent = document.getElementById('hindi-content');
+        
+        englishBtn.addEventListener('click', () => {
+            englishBtn.classList.add('active');
+            hindiBtn.classList.remove('active');
+            englishContent.classList.add('active');
+            hindiContent.classList.remove('active');
+        });
+        
+        hindiBtn.addEventListener('click', () => {
+            hindiBtn.classList.add('active');
+            englishBtn.classList.remove('active');
+            hindiContent.classList.add('active');
+            englishContent.classList.remove('active');
+        });
+        
+        // Interactive functionality
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if(this.textContent === 'Submit') {
+                    alert('Great job! Review your explanation and identify any gaps in understanding.');
+                } else if(this.textContent === 'Download Study Planner' || this.textContent === 'Download Now') {
+                    alert('Redirecting to download page...');
+                } else if(!this.hasAttribute('href')) {
+                    e.preventDefault();
+                    alert('Feature coming soon! Check our Telegram channel for updates.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
