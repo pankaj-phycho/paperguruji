@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Guruji - Professional</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #000000, #1a1a2e);
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      opacity: 0;
+      animation: fadeInPage 1.2s forwards;
+    }
+
+    @keyframes fadeInPage {
+      to { opacity: 1; }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      padding: 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .header-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(10px);
+      font-weight: 500;
+    }
+
+    .header-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+    }
+
+    .logo-container {
+      text-align: center;
+      position: relative;
+      padding: 10px 0;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      background: linear-gradient(to bottom, #00ffff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      animation: gradientFlow 3s infinite alternate;
+      position: relative;
+      display: inline-block;
+    }
+
+    @keyframes gradientFlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, #00ffff, #ff00ff);
+      border-radius: 3px;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: lineGrow 2s forwards;
+    }
+
+    @keyframes lineGrow {
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    .search-container {
+      position: relative;
+      margin: 40px 0;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 50px;
+      padding: 5px 20px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.4), 
+                  0 0 35px rgba(255, 0, 255, 0.3);
+      animation: pulse 3s infinite alternate;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.4), 
+                    0 0 35px rgba(255, 0, 255, 0.3);
+      }
+      100% {
+        box-shadow: 0 0 35px rgba(0, 255, 255, 0.6), 
+                    0 0 45px rgba(255, 0, 255, 0.5);
+      }
+    }
+
+    #question-input {
+      flex-grow: 1;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      padding: 18px 15px;
+      outline: none;
+    }
+
+    #question-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .icon-btn {
+      background: linear-gradient(135deg, #00ffff, #ff00ff);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .icon-btn::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: linear-gradient(135deg, #00ffff, #ff00ff);
+      border-radius: 50%;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .icon-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.7),
+                  0 0 30px rgba(255, 0, 255, 0.5);
+    }
+
+    .icon-btn:hover::before {
+      opacity: 1;
+      animation: rotate 1.5s linear infinite;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .icon-btn i {
+      font-size: 20px;
+      color: #000;
+      z-index: 1;
+    }
+
+    /* Right arrow icon for send button */
+    .send-arrow {
+      position: relative;
+      width: 20px;
+      height: 20px;
+    }
+
+    .send-arrow::before {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-top: 3px solid #000;
+      border-right: 3px solid #000;
+      transform: rotate(45deg);
+      top: 3px;
+      left: 2px;
+    }
+
+    .send-arrow::after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 3px;
+      background: #000;
+      top: 8px;
+      left: 0;
+    }
+
+    .welcome-container {
+      height: 60px;
+      margin: 25px 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .welcome-text {
+      font-size: 1.8rem;
+      text-align: center;
+      color: transparent;
+      background: linear-gradient(to right, #00ffff, #ff00ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: welcomeAnim 6s forwards;
+    }
+
+    @keyframes welcomeAnim {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      20% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      80% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+    }
+
+    /* Uploaded file display */
+    .uploaded-file {
+      display: flex;
+      align-items: center;
+      background: rgba(0, 255, 255, 0.1);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 8px;
+      padding: 10px 15px;
+      margin-top: 15px;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .file-info {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .file-icon {
+      font-size: 1.5rem;
+      color: #00ffff;
+    }
+
+    .file-name {
+      font-size: 0.9rem;
+      color: #fff;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 300px;
+    }
+
+    .remove-file {
+      background: rgba(255, 0, 0, 0.2);
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .remove-file:hover {
+      background: rgba(255, 0, 0, 0.4);
+      transform: scale(1.1);
+    }
+
+    .remove-file i {
+      color: #ff5555;
+      font-size: 14px;
+    }
+
+    #response-container {
+      margin-top: 30px;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 25px;
+      border-radius: 15px;
+      white-space: pre-wrap;
+      min-height: 150px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s ease;
+    }
+
+    #response-container:hover {
+      box-shadow: 0 8px 25px rgba(0, 255, 255, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .description {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 40px auto 20px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .loading-dots {
+      display: inline-block;
+      position: relative;
+      width: 80px;
+      height: 20px;
+      text-align: center;
+    }
+
+    .loading-dots span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #00ffff;
+      margin: 0 5px;
+      animation: bounce 1.5s infinite ease-in-out both;
+      box-shadow: 0 0 10px #00ffff;
+    }
+
+    .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+    .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes bounce {
+      0%, 80%, 100% { 
+        transform: scale(0);
+        opacity: 0.5;
+      }
+      40% { 
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* History Modal */
+    #history-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+      margin: 8% auto;
+      padding: 30px;
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      width: 85%;
+      max-width: 700px;
+      border-radius: 15px;
+      color: #fff;
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+      position: relative;
+      animation: modalAppear 0.5s ease-out;
+    }
+
+    @keyframes modalAppear {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .close-btn {
+      color: #aaa;
+      float: right;
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+    }
+
+    .close-btn:hover {
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff;
+    }
+
+    .history-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 18px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .history-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      padding-left: 10px;
+    }
+
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+      animation: float 15s infinite linear;
+    }
+
+    .bg-circle:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      top: -150px;
+      left: -150px;
+      animation-delay: 0s;
+      animation-duration: 25s;
+    }
+
+    .bg-circle:nth-child(2) {
+      width: 200px;
+      height: 200px;
+      bottom: -100px;
+      right: 20%;
+      animation-delay: -5s;
+      animation-duration: 20s;
+    }
+
+    .bg-circle:nth-child(3) {
+      width: 400px;
+      height: 400px;
+      bottom: -200px;
+      left: 30%;
+      animation-delay: -10s;
+      animation-duration: 30s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      50% {
+        transform: translate(20px, 20px) rotate(180deg);
+      }
+      100% {
+        transform: translate(0, 0) rotate(360deg);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .search-bar {
+        padding: 5px 15px;
+      }
+      
+      #question-input {
+        font-size: 1rem;
+        padding: 15px 10px;
+      }
+      
+      .icon-btn {
+        width: 45px;
+        height: 45px;
+      }
+      
+      .welcome-text {
+        font-size: 1.5rem;
+      }
+      
+      .file-name {
+        max-width: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-animation">
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+  </div>
+
+  <div class="container">
+    <header>
+      <button class="header-btn" id="home-btn" onclick="window.location.href='index.html'"><i class="fas fa-home"></i> Home</button>
+      <div class="logo-container">
+        <h1>AI GURUJI</h1>
+      </div>
+      <button class="header-btn" id="history-btn"><i class="fas fa-history"></i> History</button>
+    </header>
+
+    <main>
+      <div class="search-container">
+        <div class="search-bar">
+          <input type="text" id="question-input" placeholder="Ask any question...">
+          <div class="action-buttons">
+            <input type="file" id="image-upload" accept="image/*" style="display:none;">
+            <button class="icon-btn" id="camera-btn" title="Upload Image">
+              <i class="fas fa-upload"></i>
+            </button>
+            <button class="icon-btn" id="send-btn" title="Send Question">
+              <div class="send-arrow"></div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Uploaded file display area -->
+        <div id="uploaded-file-container" style="display: none;">
+          <div class="uploaded-file">
+            <div class="file-info">
+              <i class="fas fa-file-image file-icon"></i>
+              <span class="file-name" id="uploaded-file-name"></span>
+            </div>
+            <button class="remove-file" id="remove-file-btn" title="Remove file">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="welcome-container">
+        <p class="welcome-text">Welcome to PaperGuruji AI</p>
+      </div>
+      
+      <div id="response-container">Your AI assistant is ready to help! Ask any question or upload an image.</div>
+      
+      <p class="description">AI Guruji is your smart study buddy. Ask tough questions, upload notes, or take a picture – I'll explain everything in <strong>easy student language</strong>!</p>
+    </main>
+  </div>
+
+  <!-- History Modal -->
+  <div id="history-modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2><i class="fas fa-history"></i> Conversation History</h2>
+      <div id="history-content"></div>
+    </div>
+  </div>
+
+  <script>
+    const API_KEY = "AIzaSyA7I6wVrq2qIYV1nzYQXbA5s4D2SsMOb8g";
+    const questionInput = document.getElementById('question-input');
+    const responseContainer = document.getElementById('response-container');
+    const historyBtn = document.getElementById('history-btn');
+    const historyModal = document.getElementById('history-modal');
+    const closeBtn = document.querySelector('.close-btn');
+    const historyContent = document.getElementById('history-content');
+    const imageUpload = document.getElementById('image-upload');
+    const cameraBtn = document.getElementById('camera-btn');
+    const sendBtn = document.getElementById('send-btn');
+    const welcomeText = document.querySelector('.welcome-text');
+    const uploadedFileContainer = document.getElementById('uploaded-file-container');
+    const uploadedFileName = document.getElementById('uploaded-file-name');
+    const removeFileBtn = document.getElementById('remove-file-btn');
+
+    let conversationHistory = [];
+    let currentImageBase64 = null;
+    let currentFileName = null;
+
+    // Initialize the app
+    function init() {
+      // Load conversation history from localStorage if available
+      const savedHistory = localStorage.getItem('aiGurujiHistory');
+      if (savedHistory) {
+        conversationHistory = JSON.parse(savedHistory);
+        updateHistory();
+      }
+      
+      // Set up event listeners
+      setupEventListeners();
+      
+      // Trigger welcome animation on page load
+      setTimeout(() => {
+        welcomeText.style.animation = 'none';
+        setTimeout(() => {
+          welcomeText.style.animation = 'welcomeAnim 6s forwards';
+        }, 10);
+      }, 500);
+    }
+
+    function setupEventListeners() {
+      // Send question on Enter key
+      questionInput.addEventListener('keypress', e => {
+        if(e.key === 'Enter' && (questionInput.value.trim() !== '' || currentImageBase64)) {
+          getGeminiResponse(questionInput.value.trim() || "Explain this image", currentImageBase64);
+        }
+      });
+
+      // Send button click
+      sendBtn.addEventListener('click', () => {
+        if(questionInput.value.trim() !== '' || currentImageBase64) {
+          getGeminiResponse(questionInput.value.trim() || "Explain this image", currentImageBase64);
+        }
+      });
+
+      // Camera button click - fixed to trigger file input
+      cameraBtn.addEventListener('click', () => {
+        imageUpload.click();
+      });
+
+      // Image upload handling
+      imageUpload.addEventListener('change', e => {
+        const file = e.target.files[0];
+        if(file) {
+          currentFileName = file.name;
+          uploadedFileName.textContent = currentFileName;
+          uploadedFileContainer.style.display = 'block';
+          
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            currentImageBase64 = reader.result.replace(/^data:.+;base64,/, '');
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Remove uploaded file
+      removeFileBtn.addEventListener('click', () => {
+        currentImageBase64 = null;
+        currentFileName = null;
+        uploadedFileContainer.style.display = 'none';
+        imageUpload.value = '';
+      });
+
+      // History modal
+      historyBtn.onclick = () => {
+        historyModal.style.display = 'block';
+        updateHistory();
+      };
+      
+      closeBtn.onclick = () => historyModal.style.display = 'none';
+      
+      window.onclick = (e) => { 
+        if(e.target == historyModal) {
+          historyModal.style.display = 'none';
+        } 
+      };
+      
+      // Home button
+      document.getElementById('home-btn').onclick = () => {
+        window.location.href = 'index.html';
+      };
+    }
+
+    async function getGeminiResponse(prompt, imageBase64 = null){
+      // Show loading animation
+      responseContainer.innerHTML = `
+        <div class="loading-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      `;
+      
+      const model = imageBase64 ? 'gemini-pro-vision' : 'gemini-pro';
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`;
+
+      let parts = [{ 
+        text: `You are "AI Guruji", a friendly classmate-style study partner. 
+        Always explain in very simple student-friendly words. Break into short steps. 
+        Give examples from daily student life. 
+        First give 1–2 line quick summary, then step-by-step explanation, then a short easy tip.
+        Here is the question: ${prompt}` 
+      }];
+
+      if(imageBase64){
+        parts.push({ 
+          inline_data: { 
+            mime_type: "image/jpeg", 
+            data: imageBase64 
+          }
+        });
+      }
+
+      try {
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ contents: [{ parts }] })
+        });
+        
+        const data = await res.json();
+        const textResponse = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't process that request. Please try again.";
+        
+        // Format the response with some basic styling
+        const formattedResponse = textResponse
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*(.*?)\*/g, '<em>$1</em>');
+        
+        responseContainer.innerHTML = formattedResponse;
+
+        // Add to conversation history
+        conversationHistory.push({ 
+          question: prompt, 
+          answer: textResponse,
+          timestamp: new Date().toLocaleString(),
+          hasImage: imageBase64 ? true : false
+        });
+        
+        // Save to localStorage
+        localStorage.setItem('aiGurujiHistory', JSON.stringify(conversationHistory));
+        
+        updateHistory();
+      } catch(err) {
+        responseContainer.innerHTML = "Sorry, I'm experiencing technical difficulties. Please check your connection and try again.";
+        console.error("API Error:", err);
+      }
+    }
+
+    function updateHistory(){
+      historyContent.innerHTML = '';
+      
+      if (conversationHistory.length === 0) {
+        historyContent.innerHTML = '<p>No conversation history yet.</p>';
+        return;
+      }
+      
+      // Show most recent first
+      const reversedHistory = [...conversationHistory].reverse();
+      
+      reversedHistory.forEach(item => {
+        const historyItem = document.createElement('div');
+        historyItem.className = 'history-item';
+        
+        const questionText = item.question.length > 50 ? 
+          item.question.substring(0, 50) + '...' : item.question;
+        
+        historyItem.innerHTML = `
+          <p><strong>You:</strong> ${questionText}</p>
+          <p><small>${item.timestamp} ${item.hasImage ? '(with image)' : ''}</small></p>
+        `;
+        
+        historyItem.addEventListener('click', () => {
+          responseContainer.innerHTML = item.answer;
+          questionInput.value = item.question;
+          historyModal.style.display = 'none';
+        });
+        
+        historyContent.appendChild(historyItem);
+      });
+    }
+
+    // Initialize the application
+    init();
+  </script>
+</body>
+</html>
