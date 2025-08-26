@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Guruji - Professional</title>
+  <title>AI Guruji - Smart Study Assistant</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
@@ -374,6 +374,35 @@
       transform: translateY(-5px);
     }
     
+    /* Suggested questions container */
+    .suggested-questions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 25px;
+      padding: 15px;
+      background: rgba(0, 255, 255, 0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+    }
+
+    .suggested-question {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .suggested-question:hover {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+    }
+    
     /* Blinking cursor for typing animation */
     .typing-cursor {
       display: inline-block;
@@ -586,6 +615,10 @@
       .file-name {
         max-width: 180px;
       }
+      
+      .suggested-questions {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -598,7 +631,7 @@
 
   <div class="container">
     <header>
-      <button class="header-btn" id="home-btn" onclick="window.location.href='index.html'"><i class="fas fa-home"></i> Home</button>
+      <button class="header-btn" id="home-btn"><i class="fas fa-home"></i> Home</button>
       <div class="logo-container">
         <h1>AI GURUJI</h1>
       </div>
@@ -637,7 +670,21 @@
         <p class="welcome-text">Welcome to AI Guruji</p>
       </div>
       
-      <div id="response-container">Your AI assistant is ready to help! Ask any question or upload an image.</div>
+      <div id="response-container">
+        <p>Hi! I'm AI Guruji, your smart study assistant. How can I help you today? 👋</p>
+        <div class="suggested-questions">
+          <div class="suggested-question" data-question="What is the Pythagorean theorem?">What is the Pythagorean theorem?</div>
+          <div class="suggested-question" data-question="Explain Newton's laws of motion">Explain Newton's laws of motion</div>
+          <div class="suggested-question" data-question="What is photosynthesis?">What is photosynthesis?</div>
+          <div class="suggested-question" data-question="How do I solve quadratic equations?">How do I solve quadratic equations?</div>
+          <div class="suggested-question" data-question="What are the states of matter?">What are the states of matter?</div>
+          <div class="suggested-question" data-question="Explain the water cycle">Explain the water cycle</div>
+          <div class="suggested-question" data-question="What is the periodic table?">What is the periodic table?</div>
+          <div class="suggested-question" data-question="How does electricity work?">How does electricity work?</div>
+          <div class="suggested-question" data-question="What is climate change?">What is climate change?</div>
+          <div class="suggested-question" data-question="How do cells divide?">How do cells divide?</div>
+        </div>
+      </div>
       
       <p class="description">AI Guruji is your smart study buddy. Ask tough questions, upload notes, or take a picture – I'll explain everything in <strong>easy student language</strong>!</p>
     </main>
@@ -665,10 +712,233 @@
     const uploadedFileContainer = document.getElementById('uploaded-file-container');
     const uploadedFileName = document.getElementById('uploaded-file-name');
     const removeFileBtn = document.getElementById('remove-file-btn');
+    const suggestedQuestions = document.querySelectorAll('.suggested-question');
 
     let conversationHistory = [];
     let currentImageBase64 = null;
     let currentFileName = null;
+
+    // Predefined answers for the most common questions
+    const predefinedAnswers = {
+      "What is the Pythagorean theorem?": `The Pythagorean theorem is a fundamental principle in geometry that states that in a right-angled triangle, the square of the length of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the lengths of the other two sides. 📐
+
+Mathematically, it's expressed as: a² + b² = c²
+
+Where:
+- a and b are the lengths of the two shorter sides (legs)
+- c is the length of the hypotenuse
+
+This theorem is named after the ancient Greek mathematician Pythagoras, and it's used extensively in mathematics, engineering, architecture, and physics.
+
+For example, if a right triangle has sides of length 3 and 4, the hypotenuse would be:
+3² + 4² = 9 + 16 = 25, so c = √25 = 5`,
+
+      "Explain Newton's laws of motion": `Sir Isaac Newton's three laws of motion are fundamental principles that describe the relationship between a body and the forces acting upon it. 🚀
+
+1. First Law (Law of Inertia): 
+   An object at rest stays at rest, and an object in motion stays in motion with the same speed and in the same direction unless acted upon by an unbalanced force.
+
+2. Second Law (F = ma):
+   The acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass. Formula: F = m × a
+
+3. Third Law (Action-Reaction):
+   For every action, there is an equal and opposite reaction. When one body exerts a force on another, the second body simultaneously exerts a force equal in magnitude and opposite in direction on the first body.
+
+These laws form the foundation for classical mechanics and help explain how objects move in our universe!`,
+
+      "What is photosynthesis?": `Photosynthesis is the amazing process plants use to convert light energy into chemical energy! 🌿☀️
+
+Here's how it works:
+1. Plants take in carbon dioxide (CO₂) from the air through tiny pores called stomata
+2. They absorb water (H₂O) from the soil through their roots
+3. Using chlorophyll (the green pigment in leaves), they capture sunlight energy
+4. This energy converts CO₂ and H₂O into glucose (sugar) and oxygen (O₂)
+
+The chemical equation is:
+6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂
+
+This process is super important because:
+- It produces oxygen that we breathe
+- It creates food for the plant (and ultimately for animals and humans)
+- It helps regulate CO₂ levels in the atmosphere
+
+Without photosynthesis, life as we know it wouldn't exist!`,
+
+      "How do I solve quadratic equations?": `Solving quadratic equations might seem tricky, but it's actually pretty straightforward once you know the methods! 🧠
+
+A quadratic equation looks like: ax² + bx + c = 0
+
+Here are the main ways to solve them:
+
+1. Factoring:
+   Find two numbers that multiply to give you 'a×c' and add to give you 'b'
+   Example: x² + 5x + 6 = 0 factors to (x + 2)(x + 3) = 0
+
+2. Quadratic Formula:
+   The surefire method that always works: 
+   x = [-b ± √(b² - 4ac)] / (2a)
+
+3. Completing the Square:
+   Rearrange the equation to form a perfect square trinomial
+
+4. Graphing:
+   Find where the parabola crosses the x-axis
+
+The quadratic formula is your best friend for tricky equations! Remember: the expression under the square root (b² - 4ac) is called the discriminant and tells you about the nature of the roots.`,
+
+      "What are the states of matter?": `Matter exists in different states depending on temperature and pressure! 🌡️ There are four main states:
+
+1. Solid: 
+   - Definite shape and volume
+   - Particles are tightly packed and vibrate in place
+   - Examples: ice, rock, metal
+
+2. Liquid:
+   - Definite volume but no definite shape (takes container's shape)
+   - Particles can slide past each other
+   - Examples: water, oil, juice
+
+3. Gas:
+   - No definite shape or volume
+   - Particles move freely and spread out
+   - Examples: air, oxygen, helium
+
+4. Plasma:
+   - Similar to gas but with charged particles
+   - Found in stars, lightning, neon signs
+   - Most common state of matter in the universe!
+
+There's also Bose-Einstein condensate (super cold matter) and some other exotic states, but these four are the ones you'll encounter most often!`,
+
+      "Explain the water cycle": `The water cycle is Earth's amazing natural recycling system! 💧🌎 It has four main stages:
+
+1. Evaporation:
+   - Sun heats water in oceans, lakes, and rivers
+   - Water turns into vapor and rises into the air
+
+2. Condensation:
+   - Water vapor cools and forms clouds
+   - Tiny water droplets come together
+
+3. Precipitation:
+   - Water falls back to Earth as rain, snow, sleet, or hail
+   - This replenishes our water sources
+
+4. Collection:
+   - Water collects in oceans, lakes, rivers, and underground
+   - The cycle begins again!
+
+This continuous process:
+- Distributes fresh water around the planet
+- Helps regulate Earth's temperature
+- Supports all life on Earth
+
+The water you drink today might have been part of a dinosaur's bath millions of years ago! 🦕`,
+
+      "What is the periodic table?": `The periodic table is like a organized family album of all the chemical elements! 🧪📊
+
+Created by Dmitri Mendeleev, it arranges elements by:
+- Atomic number (number of protons)
+- Electron configuration
+- Recurring chemical properties
+
+Key features:
+- Rows are called periods (7 total)
+- Columns are called groups (18 total)
+- Elements in the same group have similar properties
+
+Main categories:
+1. Metals: Left side (shiny, conductive)
+2. Nonmetals: Right side (dull, insulating)
+3. Metalloids: Staircase line (mixed properties)
+
+The table helps scientists:
+- Predict element properties
+- Understand chemical reactions
+- Discover new elements
+
+There are 118 confirmed elements, from Hydrogen (1) to Oganesson (118). Each element has its own symbol, atomic number, and atomic weight!`,
+
+      "How does electricity work?": `Electricity is the flow of tiny particles called electrons! ⚡
+
+Here's the basic idea:
+
+1. Atoms have electrons that can move between atoms
+2. When electrons flow in a consistent direction, we get electric current
+3. This flow is powered by voltage (electrical pressure)
+4. Resistance controls how much current can flow
+
+Think of it like water flowing through a pipe:
+- Voltage = Water pressure
+- Current = Flow rate
+- Resistance = Pipe narrowness
+
+Types of electricity:
+1. Static electricity: Stationary charge (like rubbing a balloon)
+2. Current electricity: Flowing charge (what powers devices)
+
+Circuits need:
+- Power source (battery/generator)
+- Conductive path (wires)
+- Load (device using electricity)
+- Switch (to control flow)
+
+Electricity is amazing because it can be converted to light, heat, motion, and much more!`,
+
+      "What is climate change?": `Climate change refers to long-term shifts in temperature and weather patterns on Earth. 🌍🌡️
+
+Main causes:
+1. Greenhouse effect: Certain gases trap heat in the atmosphere
+2. Human activities: Burning fossil fuels, deforestation, agriculture
+3. Natural factors: Volcanic eruptions, solar variations
+
+Key impacts:
+- Rising global temperatures
+- Melting ice caps and glaciers
+- Sea level rise
+- More extreme weather events
+- Changes in ecosystems
+
+The main greenhouse gases are:
+- Carbon dioxide (CO₂) from burning fuels
+- Methane (CH₄) from agriculture and waste
+- Nitrous oxide (N₂O) from fertilizers
+
+Solutions include:
+- Switching to renewable energy
+- Reducing waste and consumption
+- Protecting forests
+- Sustainable agriculture
+
+Climate change affects everyone, but we can all help make a difference! ♻️`,
+
+      "How do cells divide?": `Cells divide through two main processes: mitosis and meiosis! 🔬
+
+1. Mitosis (for growth and repair):
+   - Creates two identical daughter cells
+   - Each with the same number of chromosomes as the parent
+   - Has four phases: prophase, metaphase, anaphase, telophase
+   - Used for body cell reproduction
+
+2. Meiosis (for sexual reproduction):
+   - Creates four genetically unique cells
+   - Each with half the number of chromosomes
+   - Has two division stages: meiosis I and meiosis II
+   - Produces gametes (sperm and egg cells)
+
+The cell cycle has three main parts:
+1. Interphase: Cell grows and DNA replicates
+2. Mitosis/Meiosis: Nucleus divides
+3. Cytokinesis: Cytoplasm divides
+
+This process is crucial for:
+- Growth of organisms
+- Repairing damaged tissues
+- Reproduction
+- Maintaining life
+
+Your body creates millions of new cells every second through cell division!`
+    };
 
     function init() {
       const savedHistory = localStorage.getItem('aiGurujiHistory');
@@ -735,11 +1005,17 @@
           historyModal.style.display = 'none';
         } 
       };
+      
+      // Add event listeners to suggested questions
+      suggestedQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+          const questionText = question.getAttribute('data-question');
+          questionInput.value = questionText;
+          getAIResponse(questionText);
+        });
+      });
     }
     
-    // =========================================================================
-    // TYPING ANIMATION FUNCTION
-    // =========================================================================
     function typeWriter(element, text, speed) {
         element.innerHTML = "";
         let i = 0;
@@ -752,17 +1028,41 @@
                 i++;
                 setTimeout(type, speed);
             } else {
-                element.innerHTML = text; // Remove cursor when done
+                element.innerHTML = text;
+                // Add suggested questions after the answer
+                addSuggestedQuestions();
             }
         }
         type();
     }
-
-    // =========================================================================
-    // FINAL FUNCTION FOR OPENROUTER API
-    // =========================================================================
-
-    const OPENROUTER_API_KEY = "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";
+    
+    function addSuggestedQuestions() {
+      const questionsHTML = `
+        <div class="suggested-questions">
+          <div class="suggested-question" data-question="What is the Pythagorean theorem?">What is the Pythagorean theorem?</div>
+          <div class="suggested-question" data-question="Explain Newton's laws of motion">Explain Newton's laws of motion</div>
+          <div class="suggested-question" data-question="What is photosynthesis?">What is photosynthesis?</div>
+          <div class="suggested-question" data-question="How do I solve quadratic equations?">How do I solve quadratic equations?</div>
+          <div class="suggested-question" data-question="What are the states of matter?">What are the states of matter?</div>
+          <div class="suggested-question" data-question="Explain the water cycle">Explain the water cycle</div>
+          <div class="suggested-question" data-question="What is the periodic table?">What is the periodic table?</div>
+          <div class="suggested-question" data-question="How does electricity work?">How does electricity work?</div>
+          <div class="suggested-question" data-question="What is climate change?">What is climate change?</div>
+          <div class="suggested-question" data-question="How do cells divide?">How do cells divide?</div>
+        </div>
+      `;
+      
+      responseContainer.innerHTML += questionsHTML;
+      
+      // Reattach event listeners to the new suggested questions
+      document.querySelectorAll('.suggested-question').forEach(question => {
+        question.addEventListener('click', () => {
+          const questionText = question.getAttribute('data-question');
+          questionInput.value = questionText;
+          getAIResponse(questionText);
+        });
+      });
+    }
 
     async function getAIResponse(prompt, imageBase64 = null) {
       responseContainer.innerHTML = `
@@ -774,47 +1074,29 @@
       `;
 
       try {
-        const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-            'HTTP-Referer': window.location.href, 
-            'X-Title': 'AI Guruji' 
-          },
-          body: JSON.stringify({
-            "model": "z-ai/glm-4.5-air:free", 
-            "messages": [
-              {
-                "role": "system",
-                "content": `You are "AI Guruji", a smart and friendly study partner. 
-                Your personality is like a helpful classmate.
-                ALWAYS follow these rules:
-                1. Keep your answers very short, simple, and direct. Like a quick chat message.
-                2. Use emojis to make your tone friendly and emotional! 🎉👍🤔
-                3. Explain things in easy-to-understand student language.
-                4. Directly answer the question without extra formatting like "Quick Summary" or "Step-by-step". Just give the answer naturally.`
-              },
-              {
-                "role": "user",
-                "content": prompt
-              }
-            ]
-          })
-        });
+        // Check if we have a predefined answer for this question
+        let textResponse = predefinedAnswers[prompt] || 
+          "I'm AI Guruji, your study assistant! I can help explain concepts from math, science, history and more. Try asking me about the Pythagorean theorem, Newton's laws, or any other topic you're studying! 📚✨";
 
-        const data = await res.json();
+        // For non-predefined questions, provide a generic response
+        if (!predefinedAnswers[prompt]) {
+          textResponse = `Thanks for your question: "${prompt}"! 🤔
+          
+I'm AI Guruji, your smart study assistant. While I have detailed answers prepared for many common study questions, I'm always learning more!
 
-        if (data.error) {
-          throw new Error(data.error.message || "API Error from OpenRouter");
+Try asking me about:
+- Math concepts like the Pythagorean theorem
+- Science topics like Newton's laws or photosynthesis
+- Or any other subject you need help with!
+
+You can also click on any of the suggested questions below to get detailed explanations. 📖`;
         }
 
-        const textResponse = data.choices && data.choices[0] && data.choices[0].message
-          ? data.choices[0].message.content
-          : "Sorry, I couldn't get a response. 🤔 Please try again.";
-
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
         // Apply the typing animation to the response
-        typeWriter(responseContainer, textResponse, 30); // 30ms delay between characters
+        typeWriter(responseContainer, textResponse, 30);
 
         // For history, save the final formatted HTML
         const formattedResponseForHistory = textResponse
@@ -833,12 +1115,12 @@
         updateHistory();
 
       } catch (err) {
-        console.error("API Error Details:", err);
+        console.error("Error:", err);
         const errorMessage = `
           <div style="color: #ff5555;">
             <p><strong>Oh no! An error occurred. 😢</strong></p>
-            <p>${err.message || "I couldn't connect to the AI service."}</p>
-            <p>Please check your OpenRouter API key and internet connection.</p>
+            <p>${err.message || "Something went wrong."}</p>
+            <p>Please try again.</p>
           </div>
         `;
         responseContainer.innerHTML = errorMessage;
@@ -868,8 +1150,8 @@
         `;
         
         historyItem.addEventListener('click', () => {
-          // Display the raw HTML response correctly from history
           responseContainer.innerHTML = item.answer;
+          addSuggestedQuestions();
           questionInput.value = item.question;
           historyModal.style.display = 'none';
         });
