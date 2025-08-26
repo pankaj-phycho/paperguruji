@@ -366,12 +366,29 @@
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(10px);
       transition: all 0.4s ease;
+      line-height: 1.6;
     }
 
     #response-container:hover {
       box-shadow: 0 8px 25px rgba(0, 255, 255, 0.2);
       transform: translateY(-5px);
     }
+    
+    /* Blinking cursor for typing animation */
+    .typing-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1.2rem;
+      background-color: #00ffff;
+      animation: blink 0.7s infinite;
+      margin-left: 4px;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
 
     .description {
       font-size: 1.1rem;
@@ -581,7 +598,7 @@
 
   <div class="container">
     <header>
-      <button class="header-btn" id="home-btn" onclick="window.location.href='#'"><i class="fas fa-home"></i> Home</button>
+      <button class="header-btn" id="home-btn" onclick="window.location.href='index.html'"><i class="fas fa-home"></i> Home</button>
       <div class="logo-container">
         <h1>AI GURUJI</h1>
       </div>
@@ -721,10 +738,31 @@
     }
     
     // =========================================================================
+    // TYPING ANIMATION FUNCTION
+    // =========================================================================
+    function typeWriter(element, text, speed) {
+        element.innerHTML = "";
+        let i = 0;
+        const cursor = '<span class="typing-cursor"></span>';
+        element.innerHTML = cursor;
+        
+        function type() {
+            if (i < text.length) {
+                element.innerHTML = text.substring(0, i + 1) + cursor;
+                i++;
+                setTimeout(type, speed);
+            } else {
+                element.innerHTML = text; // Remove cursor when done
+            }
+        }
+        type();
+    }
+
+    // =========================================================================
     // FINAL FUNCTION FOR OPENROUTER API
     // =========================================================================
 
-    const OPENROUTER_API_KEY = "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";
+    const OPENROUTER_API_KEY = "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";
 
     async function getAIResponse(prompt, imageBase64 = null) {
       responseContainer.innerHTML = `
@@ -741,20 +779,21 @@
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-            // Optional headers for OpenRouter rankings. You can set your site URL here.
             'HTTP-Referer': window.location.href, 
             'X-Title': 'AI Guruji' 
           },
           body: JSON.stringify({
-            // Using the free model you found
-            "model": "openai/gpt-oss-20b:free", 
+            "model": "z-ai/glm-4.5-air:free", 
             "messages": [
               {
                 "role": "system",
-                "content": `You are "AI Guruji", a friendly classmate-style study partner. 
-                Always explain in very simple student-friendly words. Break into short steps. 
-                Give examples from daily student life. 
-                First give 1–2 line quick summary, then step-by-step explanation, then a short easy tip.`
+                "content": `You are "AI Guruji", a smart and friendly study partner. 
+                Your personality is like a helpful classmate.
+                ALWAYS follow these rules:
+                1. Keep your answers very short, simple, and direct. Like a quick chat message.
+                2. Use emojis to make your tone friendly and emotional! 🎉👍🤔
+                3. Explain things in easy-to-understand student language.
+                4. Directly answer the question without extra formatting like "Quick Summary" or "Step-by-step". Just give the answer naturally.`
               },
               {
                 "role": "user",
@@ -772,18 +811,20 @@
 
         const textResponse = data.choices && data.choices[0] && data.choices[0].message
           ? data.choices[0].message.content
-          : "No response received from the AI.";
+          : "Sorry, I couldn't get a response. 🤔 Please try again.";
 
-        const formattedResponse = textResponse
+        // Apply the typing animation to the response
+        typeWriter(responseContainer, textResponse, 30); // 30ms delay between characters
+
+        // For history, save the final formatted HTML
+        const formattedResponseForHistory = textResponse
           .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
           .replace(/\*(.*?)\*/g, '<em>$1</em>')
           .replace(/\n/g, '<br>');
 
-        responseContainer.innerHTML = formattedResponse;
-
         conversationHistory.push({
           question: prompt,
-          answer: formattedResponse,
+          answer: formattedResponseForHistory,
           timestamp: new Date().toLocaleString(),
           hasImage: imageBase64 ? true : false
         });
@@ -793,12 +834,14 @@
 
       } catch (err) {
         console.error("API Error Details:", err);
-        responseContainer.innerHTML = `
+        const errorMessage = `
           <div style="color: #ff5555;">
-            <p><strong>Error:</strong> ${err.message || "Unable to connect to AI service"}</p>
+            <p><strong>Oh no! An error occurred. 😢</strong></p>
+            <p>${err.message || "I couldn't connect to the AI service."}</p>
             <p>Please check your OpenRouter API key and internet connection.</p>
           </div>
         `;
+        responseContainer.innerHTML = errorMessage;
       }
     }
 
@@ -821,11 +864,11 @@
         
         historyItem.innerHTML = `
           <p><strong>You:</strong> ${questionText}</p>
-          <p><small>${item.timestamp} ${item.hasImage ? '(with image)' : ''}</small></p>
+          <p><small>${item.timestamp} ${item.hasImage ? '(with image) 📸' : ''}</small></p>
         `;
         
         historyItem.addEventListener('click', () => {
-          // Display the raw HTML response correctly
+          // Display the raw HTML response correctly from history
           responseContainer.innerHTML = item.answer;
           questionInput.value = item.question;
           historyModal.style.display = 'none';
