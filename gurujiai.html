@@ -581,7 +581,7 @@
 
   <div class="container">
     <header>
-      <button class="header-btn" id="home-btn" onclick="window.location.href='index.html'"><i class="fas fa-home"></i> Home</button>
+      <button class="header-btn" id="home-btn" onclick="window.location.href='#'"><i class="fas fa-home"></i> Home</button>
       <div class="logo-container">
         <h1>AI GURUJI</h1>
       </div>
@@ -603,7 +603,6 @@
           </div>
         </div>
         
-        <!-- Uploaded file display area -->
         <div id="uploaded-file-container" style="display: none;">
           <div class="uploaded-file">
             <div class="file-info">
@@ -618,7 +617,7 @@
       </div>
 
       <div class="welcome-container">
-        <p class="welcome-text">Welcome to PaperGuruji AI</p>
+        <p class="welcome-text">Welcome to AI Guruji</p>
       </div>
       
       <div id="response-container">Your AI assistant is ready to help! Ask any question or upload an image.</div>
@@ -627,7 +626,6 @@
     </main>
   </div>
 
-  <!-- History Modal -->
   <div id="history-modal">
     <div class="modal-content">
       <span class="close-btn">&times;</span>
@@ -637,7 +635,6 @@
   </div>
 
   <script>
-    const API_KEY = "AIzaSyC9j6tpkleopiG-zvJh5b0PFk4iS-RyK5I";
     const questionInput = document.getElementById('question-input');
     const responseContainer = document.getElementById('response-container');
     const historyBtn = document.getElementById('history-btn');
@@ -656,19 +653,13 @@
     let currentImageBase64 = null;
     let currentFileName = null;
 
-    // Initialize the app
     function init() {
-      // Load conversation history from localStorage if available
       const savedHistory = localStorage.getItem('aiGurujiHistory');
       if (savedHistory) {
         conversationHistory = JSON.parse(savedHistory);
         updateHistory();
       }
-      
-      // Set up event listeners
       setupEventListeners();
-      
-      // Trigger welcome animation on page load
       setTimeout(() => {
         welcomeText.style.animation = 'none';
         setTimeout(() => {
@@ -678,33 +669,28 @@
     }
 
     function setupEventListeners() {
-      // Send question on Enter key
       questionInput.addEventListener('keypress', e => {
         if(e.key === 'Enter' && (questionInput.value.trim() !== '' || currentImageBase64)) {
-          getGeminiResponse(questionInput.value.trim() || "Explain this image", currentImageBase64);
+          getAIResponse(questionInput.value.trim() || "Explain this image", currentImageBase64);
         }
       });
 
-      // Send button click
       sendBtn.addEventListener('click', () => {
         if(questionInput.value.trim() !== '' || currentImageBase64) {
-          getGeminiResponse(questionInput.value.trim() || "Explain this image", currentImageBase64);
+          getAIResponse(questionInput.value.trim() || "Explain this image", currentImageBase64);
         }
       });
 
-      // Camera button click - fixed to trigger file input
       cameraBtn.addEventListener('click', () => {
         imageUpload.click();
       });
 
-      // Image upload handling
       imageUpload.addEventListener('change', e => {
         const file = e.target.files[0];
         if(file) {
           currentFileName = file.name;
           uploadedFileName.textContent = currentFileName;
           uploadedFileContainer.style.display = 'block';
-          
           const reader = new FileReader();
           reader.onloadend = () => {
             currentImageBase64 = reader.result.replace(/^data:.+;base64,/, '');
@@ -713,7 +699,6 @@
         }
       });
 
-      // Remove uploaded file
       removeFileBtn.addEventListener('click', () => {
         currentImageBase64 = null;
         currentFileName = null;
@@ -721,7 +706,6 @@
         imageUpload.value = '';
       });
 
-      // History modal
       historyBtn.onclick = () => {
         historyModal.style.display = 'block';
         updateHistory();
@@ -734,15 +718,15 @@
           historyModal.style.display = 'none';
         } 
       };
-      
-      // Home button
-      document.getElementById('home-btn').onclick = () => {
-        window.location.href = 'index.html';
-      };
     }
+    
+    // =========================================================================
+    // FINAL FUNCTION FOR OPENROUTER API
+    // =========================================================================
 
-    async function getGeminiResponse(prompt, imageBase64 = null){
-      // Show loading animation
+    const OPENROUTER_API_KEY = "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";
+
+    async function getAIResponse(prompt, imageBase64 = null) {
       responseContainer.innerHTML = `
         <div class="loading-dots">
           <span></span>
@@ -750,59 +734,71 @@
           <span></span>
         </div>
       `;
-      
-      const model = imageBase64 ? 'gemini-pro-vision' : 'gemini-pro';
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`;
-
-      let parts = [{ 
-        text: `You are "AI Guruji", a friendly classmate-style study partner. 
-        Always explain in very simple student-friendly words. Break into short steps. 
-        Give examples from daily student life. 
-        First give 1–2 line quick summary, then step-by-step explanation, then a short easy tip.
-        Here is the question: ${prompt}` 
-      }];
-
-      if(imageBase64){
-        parts.push({ 
-          inline_data: { 
-            mime_type: "image/jpeg", 
-            data: imageBase64 
-          }
-        });
-      }
 
       try {
-        const res = await fetch(url, {
+        const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ contents: [{ parts }] })
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+            // Optional headers for OpenRouter rankings. You can set your site URL here.
+            'HTTP-Referer': window.location.href, 
+            'X-Title': 'AI Guruji' 
+          },
+          body: JSON.stringify({
+            // Using the free model you found
+            "model": "openai/gpt-oss-20b:free", 
+            "messages": [
+              {
+                "role": "system",
+                "content": `You are "AI Guruji", a friendly classmate-style study partner. 
+                Always explain in very simple student-friendly words. Break into short steps. 
+                Give examples from daily student life. 
+                First give 1–2 line quick summary, then step-by-step explanation, then a short easy tip.`
+              },
+              {
+                "role": "user",
+                "content": prompt
+              }
+            ]
+          })
         });
-        
+
         const data = await res.json();
-        const textResponse = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't process that request. Please try again.";
-        
-        // Format the response with some basic styling
+
+        if (data.error) {
+          throw new Error(data.error.message || "API Error from OpenRouter");
+        }
+
+        const textResponse = data.choices && data.choices[0] && data.choices[0].message
+          ? data.choices[0].message.content
+          : "No response received from the AI.";
+
         const formattedResponse = textResponse
           .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-          .replace(/\*(.*?)\*/g, '<em>$1</em>');
-        
+          .replace(/\*(.*?)\*/g, '<em>$1</em>')
+          .replace(/\n/g, '<br>');
+
         responseContainer.innerHTML = formattedResponse;
 
-        // Add to conversation history
-        conversationHistory.push({ 
-          question: prompt, 
-          answer: textResponse,
+        conversationHistory.push({
+          question: prompt,
+          answer: formattedResponse,
           timestamp: new Date().toLocaleString(),
           hasImage: imageBase64 ? true : false
         });
-        
-        // Save to localStorage
+
         localStorage.setItem('aiGurujiHistory', JSON.stringify(conversationHistory));
-        
         updateHistory();
-      } catch(err) {
-        responseContainer.innerHTML = "Sorry, I'm experiencing technical difficulties. Please check your connection and try again.";
-        console.error("API Error:", err);
+
+      } catch (err) {
+        console.error("API Error Details:", err);
+        responseContainer.innerHTML = `
+          <div style="color: #ff5555;">
+            <p><strong>Error:</strong> ${err.message || "Unable to connect to AI service"}</p>
+            <p>Please check your OpenRouter API key and internet connection.</p>
+          </div>
+        `;
       }
     }
 
@@ -814,7 +810,6 @@
         return;
       }
       
-      // Show most recent first
       const reversedHistory = [...conversationHistory].reverse();
       
       reversedHistory.forEach(item => {
@@ -830,6 +825,7 @@
         `;
         
         historyItem.addEventListener('click', () => {
+          // Display the raw HTML response correctly
           responseContainer.innerHTML = item.answer;
           questionInput.value = item.question;
           historyModal.style.display = 'none';
@@ -839,7 +835,6 @@
       });
     }
 
-    // Initialize the application
     init();
   </script>
 </body>
